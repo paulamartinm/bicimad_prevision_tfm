@@ -4,16 +4,20 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-st.set_page_config(page_title="Bicimad demand prediction", layout="wide")
-st.header("Demand prediction BICIMAD")
+header = st.beta_container()
+part1 = st.beta_container()
+with header:
+   st.set_page_config(page_title="Bicimad demand prediction", layout="wide")
+   st.header("Demand prediction BICIMAD")
 
-with st.container():
+with part1:
     st.write("---")
     left_column, right_column = st.columns(2)
     with left_column:
         st.header("Evolution of the demand")
         
-        stations = sel_col.selectbox('Select the zone: ', options = ['100','200'])
+        stations = st.selectbox('Select the zone: ', options = ['100','200'])
+       
         
     with right_column:
         df = pd.read_csv("stations_final.csv")
