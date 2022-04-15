@@ -1,23 +1,18 @@
 # -*- coding: utf-8 -*-
 
+
 import streamlit as st
 import pandas as pd
 import numpy as np
 
-header = st.container()
-part1 = st.container()
-with header:
-   st.set_page_config(page_title="Bicimad demand prediction", layout="wide")
-   st.header("Demand prediction BICIMAD")
+st.set_page_config(page_title="Bicimad demand prediction", layout="wide")
+st.header("Demand prediction BICIMAD")
 
-with part1:
+with st.container():
     st.write("---")
     left_column, right_column = st.columns(2)
     with left_column:
         st.header("Evolution of the demand")
-        
-    
-       
         
     with right_column:
         df = pd.read_csv("stations_final.csv")
@@ -26,4 +21,5 @@ with part1:
         df = df[['lat', 'lon']]
         st.map(df)
      
+
 
