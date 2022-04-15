@@ -20,6 +20,7 @@ with st.container():
             option = st.selectbox('Postal code', list(df['postal_code'].unique()))
         
         with right_column_1:
+            st.write(option)
             
     with right_column:
        
