@@ -13,7 +13,7 @@ with st.container():
     with left_column:
         st.header("Evolution of the demand")
         
-        stations = sel_col.selectbox('Select the zone: ', options = df['postal_code'].unique())
+        stations = sel_col.selectbox('Select the zone: ', options = ['100','200'])
         
     with right_column:
         df = pd.read_csv("stations_final.csv")
