@@ -14,8 +14,10 @@ with st.container():
     with left_column:
         st.header("Evolution of the demand")
         
-    
-        option = st.selectbox('Postal code', list(df['postal_code'].unique()))
+        left_column_1, medium_column_1, right_column_1 = st.columns(3)
+        
+        with left_column_1:
+            option = st.selectbox('Postal code', list(df['postal_code'].unique()))
         
     with right_column:
        
