@@ -16,7 +16,7 @@ with part1:
     with left_column:
         st.header("Evolution of the demand")
         
-        stations = st.selectbox('Select the zone: ', options = ['100','200'])
+        #stations = st.selectbox('Select the zone: ', options = ['100','200'])
        
         
     with right_column:
