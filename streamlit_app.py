@@ -15,14 +15,15 @@ with st.container():
         st.header("Evolution of the demand")
         
         
-        option = st.selectbox('Postal code', list(df['postal_code'].unique()))
+        postal_code = st.selectbox('Postal code', list(df['postal_code'].unique()))
      
             
     with right_column:
        
         df['lat']= df['latitude']
         df['lon']=df['longitude']
-        df = df[['lat', 'lon']]
+        df = df[['lat', 'lon', 'postal_code']]
+        df = df[df['postal_code']==postal_code]
         st.map(df)
      
 
