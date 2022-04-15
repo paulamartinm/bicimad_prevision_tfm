@@ -4,8 +4,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-header = st.beta_container()
-part1 = st.beta_container()
+header = st.container()
+part1 = st.container()
 with header:
    st.set_page_config(page_title="Bicimad demand prediction", layout="wide")
    st.header("Demand prediction BICIMAD")
