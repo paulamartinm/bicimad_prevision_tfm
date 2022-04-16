@@ -15,7 +15,7 @@ selected = option_menu(
         orientation = "horizontal"
         
     )
-st.set_page_config(page_title="Bicimad demand prediction", layout="wide")
+#st.set_page_config(page_title="Bicimad demand prediction", layout="wide")
 st.header("Demand prediction BICIMAD")
 
 
