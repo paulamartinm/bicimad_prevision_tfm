@@ -12,7 +12,7 @@ plt.style.use("ggplot")
 with st.sidebar:
     selected = option_menu(
         menu_title = "Main menu",
-        options= ["Prediction of demand", "Dashboard"],
+        options= ["Prediction of demand", "Dashboard"]
     )
 
 df_stations = pd.read_csv("stations_final.csv")
