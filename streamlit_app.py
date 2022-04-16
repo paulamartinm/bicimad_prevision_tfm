@@ -6,7 +6,8 @@ import pandas as pd
 import numpy as np
 from streamlit_option_menu import option_menu
 
-
+st.set_page_config(page_title="Bicimad demand prediction", layout="wide")
+st.header("Demand prediction BICIMAD")
 #Navigation menu
 with st.sidebar:
     selected = option_menu(
@@ -18,9 +19,6 @@ with st.sidebar:
 df_stations = pd.read_csv("stations_final.csv")
 
 if selected == "Prediction of demand":
-    
-    st.set_page_config(page_title="Bicimad demand prediction", layout="wide")
-    st.header("Demand prediction BICIMAD")
 
     
     with st.container():
