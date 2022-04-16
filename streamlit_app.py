@@ -12,7 +12,7 @@ with st.sidebar:
     selected = option_menu(
         menu_title = None,
         options= ["Prediction of demand", "Dashboard"],
-        orientation = "horizontal"
+        
     )
 
 df_stations = pd.read_csv("stations_final.csv")
