@@ -42,9 +42,7 @@ if selected == "Prediction of demand":
             st.map(df)
           
         
-        
-if selected == "Dashboard":
-    st.set_page_config(page_title="Dashboard of evolution", layout="wide")
+
 
     
      
