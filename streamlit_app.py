@@ -9,10 +9,10 @@ from streamlit_option_menu import option_menu
 st.set_page_config(page_title="Bicimad demand prediction", layout="wide")
 st.header("Demand prediction BICIMAD")
 #Navigation menu
-with st.sidebar:
-    selected = option_menu(
+selected = option_menu(
         menu_title = None,
         options= ["Prediction of demand", "Dashboard"],
+        icons = ["bar-chart-line", "bicycle"]
         
     )
 
