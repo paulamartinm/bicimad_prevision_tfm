@@ -16,7 +16,7 @@ selected = option_menu(
         
     )
 
-st.header("Demand prediction BICIMAD")
+
 
 
 df_stations = pd.read_csv("stations_final.csv")
@@ -28,9 +28,7 @@ if selected == "Prediction of demand":
         st.write("---")
         left_column, right_column = st.columns(2)
         with left_column:
-            st.header("Evolution of the demand")
-        
-        
+            st.header("Demand prediction BICIMAD")
             postal_code = st.selectbox('Postal code', list(df_stations['postal_code'].unique()))
      
             
