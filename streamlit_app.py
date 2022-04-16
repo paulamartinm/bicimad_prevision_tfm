@@ -22,7 +22,7 @@ if selected == "Prediction of demand":
     st.set_page_config(page_title="Bicimad demand prediction", layout="wide")
     st.header("Demand prediction BICIMAD")
 
-    st.sidebar.
+    
     with st.container():
         st.write("---")
         left_column, right_column = st.columns(2)
