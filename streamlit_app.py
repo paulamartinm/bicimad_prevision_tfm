@@ -22,7 +22,7 @@ selected = option_menu(
 df_stations = pd.read_csv("stations_final.csv")
 
 if selected == "Prediction of demand":
-    visualization = st.sidebar.selectbox("Select the type of visualization: ", ["All stations", "Demand per station"])
+    visualization = st.sidebar.selectbox("Select the type of visualization: ", ["All stations", "Demand per zones"])
     if visualization == "Demand per station":
         postal_code = st.sidebar.selectbox('Postal code', list(df_stations['postal_code'].unique()))
     
@@ -39,7 +39,7 @@ if selected == "Prediction of demand":
             df_stations['lon']=df_stations['longitude']
             df_stations = df_stations[['lat', 'lon', 'postal_code']]
             
-            if visualization == "Demand per station":
+            if visualization == "Demand per zones":
                 st.map(df_stations[df_stations['postal_code']==postal_code])
                 
             if visualization == "All stations":
