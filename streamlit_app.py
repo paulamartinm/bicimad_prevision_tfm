@@ -34,13 +34,18 @@ if selected == "Prediction of demand":
             
      
             
-        with right_column:
-       
+        with right_column:    
             df_stations['lat']= df_stations['latitude']
             df_stations['lon']=df_stations['longitude']
             df_stations = df_stations[['lat', 'lon', 'postal_code']]
-            df_stations = df_stations[df_stations['postal_code']==postal_code]
-            st.map(df_stations)
+            
+            if visualization == "Demand per station":
+                st.map(df_stations[df_stations['postal_code']==postal_code])
+                
+            if visualization == "All stations":
+                
+                st.map(df_stations)
+                
           
         
 
