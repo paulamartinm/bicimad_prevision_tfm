@@ -37,7 +37,7 @@ if selected == "Prediction of demand":
             df_stations['lon']=df_stations['longitude']
             df_stations = df_stations[['lat', 'lon', 'postal_code']]
             df_stations = df_stations[df_stations['postal_code']==postal_code]
-            st.map(df)
+            st.map(df_stations)
           
         
 
