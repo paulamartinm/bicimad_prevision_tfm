@@ -4,13 +4,15 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+from streamlit_option_menu import option_menu
 
 
 #Navigation menu
 with st.sidebar:
     selected = option_menu(
-        menu_title = "Main menu",
-        options= ["Prediction of demand", "Dashboard"]
+        menu_title = None,
+        options= ["Prediction of demand", "Dashboard"],
+        orientation = "horizontal"
     )
 
 df_stations = pd.read_csv("stations_final.csv")
