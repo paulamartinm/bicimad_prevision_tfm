@@ -6,8 +6,7 @@ import pandas as pd
 import numpy as np
 from streamlit_option_menu import option_menu
 
-st.set_page_config(page_title="Bicimad demand prediction", layout="wide")
-st.header("Demand prediction BICIMAD")
+
 #Navigation menu
 selected = option_menu(
         menu_title = None,
@@ -16,6 +15,8 @@ selected = option_menu(
         orientation = "horizontal"
         
     )
+st.set_page_config(page_title="Bicimad demand prediction", layout="wide")
+st.header("Demand prediction BICIMAD")
 
 
 df_stations = pd.read_csv("stations_final.csv")
