@@ -12,9 +12,13 @@ st.header("Demand prediction BICIMAD")
 selected = option_menu(
         menu_title = None,
         options= ["Prediction of demand", "Dashboard"],
-        icons = ["bar-chart-line", "bicycle"]
+        icons = ["bar-chart-line", "bicycle"],
+        orientation = "horizontal"
         
     )
+
+st.set_page_config(page_title="Bicimad demand prediction", layout="wide")
+st.header("Demand prediction BICIMAD")
 
 df_stations = pd.read_csv("stations_final.csv")
 
