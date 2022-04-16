@@ -6,8 +6,6 @@ import pandas as pd
 import numpy as np
 
 
-plt.style.use("ggplot")
-
 #Navigation menu
 with st.sidebar:
     selected = option_menu(
