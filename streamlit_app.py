@@ -20,6 +20,7 @@ selected = option_menu(
 
 
 df_stations = pd.read_csv("stations_final.csv")
+predictions_total = pd.read_csv("predictions_all_stations.csv")
 
 if selected == "Prediction of demand":
     visualization = st.sidebar.selectbox("Select the type of visualization: ", ["All stations", "Demand per zones"])
