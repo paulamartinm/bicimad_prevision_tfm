@@ -34,6 +34,16 @@ if selected == "Prediction of demand":
         line_chart_data = predictions_total.copy()
         fig = px.line(line_chart_data)
         st.write(fig)
+        fig.update_layout(
+                showlegend = False,
+                width = 800,
+                height = 500,
+                margin = dict(l=1, r=1, b=1, t=1),
+                font = dict(color = "#383635", size = 15),
+                paper_bgcolor = background_color
+        )
+        #fig.update_xaxes(type='category')
+                
         left_column, right_column = st.columns(2)
         with left_column:
             st.header("Demand prediction BICIMAD")
