@@ -5,6 +5,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from streamlit_option_menu import option_menu
+import plotly.express as px
+import plotly.graph_objects as go
 
 st.set_page_config(layout="wide")
 #Navigation menu
@@ -29,6 +31,9 @@ if selected == "Prediction of demand":
     
     with st.container():
         st.write("---")
+        line_chart_data = predictions_total.copy()
+        fig = px.line(line_chart_data)
+        st.write(fig)
         left_column, right_column = st.columns(2)
         with left_column:
             st.header("Demand prediction BICIMAD")
