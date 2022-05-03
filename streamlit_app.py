@@ -39,9 +39,9 @@ if selected == "Prediction of demand":
                 width = 800,
                 height = 500,
                 margin = dict(l=1, r=1, b=1, t=1),
-                font = dict(color = "#383635", size = 15),
-                paper_bgcolor = background_color
+                font = dict(color = "#383635", size = 15)
         )
+        st.write(fig)
         #fig.update_xaxes(type='category')
                 
         left_column, right_column = st.columns(2)
