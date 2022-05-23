@@ -66,8 +66,8 @@ if selected == "Prediction of demand":
 if selected == "Dashboard":
     year = st.sidebar.selectbox("Select the year: ", [2021,2020,2019])
     month = st.sidebar.multiselect("Select the month: ", [1,2,3,4,5,6,7,8,9,10,11,12], default=None)
-    average_demand_per_day = int(rides_per_day[rides_per_day['year']==year]['rides'].mean())
-    average_demand_per_day_year_before = int(rides_per_day[rides_per_day['year']==year-1]['rides'].mean())
+    average_demand_per_day = int(rides_per_day[(rides_per_day['year']==year) & (rides_per_day['month']==month)]['rides'].mean())
+    average_demand_per_day_year_before = int(rides_per_day[(rides_per_day['year']==year-1)  & (rides_per_day['month']==month)]['rides'].mean())
     percentual_variation_demand_year = round(((average_demand_per_day - average_demand_per_day_year_before) / average_demand_per_day_year_before)*100,2)
     avg_rides_per_hour = rides_per_day[rides_per_day['year']==year].groupby(['hour']).mean().reset_index()
     max_rides = avg_rides_per_hour['rides'].max()
