@@ -64,7 +64,7 @@ if selected == "Prediction of demand":
                 st.map(df_stations)
                 
 if selected == "Dashboard":
-    year = st.sidebar.selectbox("Select the year: ", [2019,2020,2021])
+    year = st.sidebar.selectbox("Select the year: ", [2021,2020,2019])
     average_demand_per_day = int(rides_per_day[rides_per_day['year']==year]['rides'])
     average_demand_per_day_year_before = int(rides_per_day[rides_per_day['year']==year-1]['rides'])
     percentual_variation_demand_year = int((average_demand_per_day - average_demand_per_day_year_before) / average_demand_per_day_year_before)*100
