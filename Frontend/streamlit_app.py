@@ -71,8 +71,11 @@ if selected == "Dashboard":
     avg_rides_per_hour = rides_per_day[rides_per_day['year']==year].groupby(['hour']).mean().reset_index()
     max_rides = avg_rides_per_hour['rides'].max()
     peak_hour = avg_rides_per_hour[avg_rides_per_hour['rides'] == max_rides]['hour']
-    
+    avg_rides_day = rides_per_day[rides_per_day['year'] == year].groupby(['weekday']).mean().reset_index()
+    max_demand = avg_rides_day['rides'].max()
+    peak_day = avg_rides_day[avg_rides_day['rides']==max_demand]['weekday']
+
     col1, col2, col3, col4 = st.columns(4)
     col1.metric(label="Avg. demand per hour", value = average_demand_per_day, delta = percentual_variation_demand_year)
     col2.metric(label="Peak hour demand", value = peak_hour)
-    col3.metric(label = "Peak day demand", value = "Monday")
+    col3.metric(label = "Peak day demand", value = peak_day)
