@@ -64,12 +64,12 @@ if selected == "Prediction of demand":
                 st.map(df_stations)
                 
  if selected == "Dashboard":
-     visualization = st.sidebar.selectbox("Select the type of visualization: ", ["All stations", "Demand per zones"])
-     year = st.sidebar.selectbox("Select the year: ", [2019,2020,2021])
-     if visualization == "Demand per zones":
-        postal_code = st.sidebar.selectbox('Postal code', list(df_stations['postal_code'].unique()))
+    visualization = st.sidebar.selectbox("Select the type of visualization: ", ["All stations", "Demand per zones"])
+    year = st.sidebar.selectbox("Select the year: ", [2019,2020,2021])
+    if visualization == "Demand per zones":
+       postal_code = st.sidebar.selectbox('Postal code', list(df_stations['postal_code'].unique()))
         
-     if visualization == "All stations":
+    if visualization == "All stations":
         average_demand_per_day = int(rides_per_day[rides_per_day['year']==year]['rides'])
         average_demand_per_day_year_before = int(rides_per_day[rides_per_day['year']==year-1]['rides'])
         percentual_variation_demand_year = int((average_demand_per_day - average_demand_per_day_year_before) / average_demand_per_day_year_before)*100
