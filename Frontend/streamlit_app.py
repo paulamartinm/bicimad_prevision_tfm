@@ -65,8 +65,8 @@ if selected == "Prediction of demand":
                 
 if selected == "Dashboard":
     year = st.sidebar.selectbox("Select the year: ", [2021,2020,2019])
-    average_demand_per_day = int(rides_per_day[rides_per_day['year']==year]['rides'])
-    average_demand_per_day_year_before = int(rides_per_day[rides_per_day['year']==year-1]['rides'])
+    average_demand_per_day = int(rides_per_day[rides_per_day['year']==year]['rides'].mean())
+    average_demand_per_day_year_before = int(rides_per_day[rides_per_day['year']==year-1]['rides'].mean())
     percentual_variation_demand_year = int((average_demand_per_day - average_demand_per_day_year_before) / average_demand_per_day_year_before)*100
     col1, col2, col3 = st.columns(3)
     col1.metric(label="Avg. demand per day", value = average_demand_per_day, delta = percentual_variation_demand_year) 
