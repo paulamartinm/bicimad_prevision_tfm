@@ -62,5 +62,3 @@ if selected == "Prediction of demand":
                 
                 st.map(df_stations)
                 
-df_stations = pd.read_csv("stations_final.csv")
-                
