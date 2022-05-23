@@ -68,7 +68,7 @@ if selected == "Dashboard":
     average_demand_per_day = int(rides_per_day[rides_per_day['year']==year]['rides'].mean())
     average_demand_per_day_year_before = int(rides_per_day[rides_per_day['year']==year-1]['rides'].mean())
     percentual_variation_demand_year = round(((average_demand_per_day - average_demand_per_day_year_before) / average_demand_per_day_year_before)*100,2)
-    avg_rides_per_hour = rides_per_day[rides_per_day['year']==year]==2021].groupby(['hour']).mean().reset_index()
+    avg_rides_per_hour = rides_per_day[rides_per_day['year']==year].groupby(['hour']).mean().reset_index()
     max_rides = avg_rides_per_hour['rides'].max()
     peak_hour = avg_rides_per_hour[avg_rides_per_hour['rides'] == max_rides]['hour']
     col1, col2, col3 = st.columns(3)
