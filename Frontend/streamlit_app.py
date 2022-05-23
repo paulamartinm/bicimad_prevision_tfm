@@ -64,16 +64,3 @@ if selected == "Prediction of demand":
                 
 df_stations = pd.read_csv("stations_final.csv")
                 
-if selected == "Dashboard":
-        
-     
-                
-                
-          
-        
-
-
-    
-     
-
-
