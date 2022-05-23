@@ -66,9 +66,7 @@ df_stations = pd.read_csv("stations_final.csv")
                 
 if selected == "Dashboard":
         
-        with st.container():
-                col1,col2,col3,col4 = st.columns(4)
-                col1.metric("Nº of stations", df_stations['id'].count(),"")
+     
                 
                 
           
