@@ -63,7 +63,7 @@ if selected == "Prediction of demand":
                 
                 st.map(df_stations)
                 
- if selected == "Dashboard": 
+ if selected == "Dashboard":
      visualization = st.sidebar.selectbox("Select the type of visualization: ", ["All stations", "Demand per zones"])
      year = st.sidebar.selectbox("Select the year: ", [2019,2020,2021])
      if visualization == "Demand per zones":
