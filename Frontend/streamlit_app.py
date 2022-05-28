@@ -99,7 +99,7 @@ if selected == "Dashboard":
      rides_per_hour_months=rides_per_hour[rides_per_hour['month'].isin(month)]
      st.subheader('Distribution of demand ')
      x=st.radio('Period: ', ['per hour', 'per weekday'])
-     y=st.radio('Plot: ', ['boxplot','lineplot']
+     y=st.radio('Plot: ', ['boxplot','lineplot'])
      if x == "per hour":
        
         
