@@ -2,4 +2,4 @@ streamlit-option-menu
 streamlit_option_menu
 plotly
 seaborn
-streamlit_prophet.lib.exposition.visualize
+streamlit_prophet
