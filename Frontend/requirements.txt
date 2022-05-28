@@ -2,3 +2,7 @@ streamlit-option-menu
 streamlit_option_menu
 plotly
 seaborn
+streamlit_prophet.lib.exposition.visualize
+plot_components
+plot_future
+plot_overview
