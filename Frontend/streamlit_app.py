@@ -105,8 +105,10 @@ if selected == "Dashboard":
         y=st.radio('Plot: ', ['boxplot','lineplot'])
      if x == "per hour":
        
-        
-        fig = px.box(rides_per_hour_months[rides_per_hour_months['year']==year], x= 'hour', y='rides', color='is_weekend')
+        if y == "boxplot":
+                fig = px.box(rides_per_hour_months[rides_per_hour_months['year']==year], x= 'hour', y='rides', color='is_weekend')
+        if y == "lineplot":
+                fig = px.line(rides_per_hour_months[rides_per_hour_months['year']==year], x='hour', y='rides')
         fig.update_layout(
                 showlegend = True,
                 width = 1400,
