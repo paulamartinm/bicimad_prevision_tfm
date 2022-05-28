@@ -100,11 +100,11 @@ if selected == "Dashboard":
      rides_per_hour_months=rides_per_hour[rides_per_hour['month'].isin(month)]
      fig = px.box(rides_per_hour_months[rides_per_hour_months['year']==year], x= 'hour', y='rides', color='is_weekend')
      fig.update_layout(
-                showlegend = False,
+                showlegend = True,
                 width = 1200,
                 height = 400,
                 margin = dict(l=1, r=1, b=1, t=1),
                 font = dict(color = "#383635", size = 15)
         )
-     fig.show()
+     st.write(fig)
    
