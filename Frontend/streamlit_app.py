@@ -75,9 +75,11 @@ if selected == "Dashboard":
   
   average_demand_year_before = int(average_demand_month[average_demand_month['year'] == year - 1]['rides'])
   percentual_variation_demand_year = round(((average_demand_year - average_demand_year_before) / average_demand_year_before)*100,2)
-        
-  avg_rides_per_hour = rides_per_hour[rides_per_hour['year']==year].groupby(['hour']).mean().reset_index()
+  
+  avg_rides_months = rides_per_hour[rides_per_hour['month'].isin(month)].groupby(['year', 'hour']).mean().reset_index()
+  avg_rides_per_hour = avg_rides_months[avg_rides_months['year']==year]
   max_rides = avg_rides_per_hour['rides'].max()
+  
   peak_hour = avg_rides_per_hour[avg_rides_per_hour['rides'] == max_rides]['hour']
   avg_rides_day = rides_per_hour[rides_per_hour['year'] == year].groupby(['weekday']).mean().reset_index()
   max_demand = avg_rides_day['rides'].max()
