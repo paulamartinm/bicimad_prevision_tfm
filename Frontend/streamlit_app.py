@@ -79,11 +79,12 @@ if selected == "Dashboard":
   avg_rides_months = rides_per_hour[rides_per_hour['month'].isin(month)].groupby(['year', 'hour']).mean().reset_index()
   avg_rides_per_hour = avg_rides_months[avg_rides_months['year']==year]
   max_rides = avg_rides_per_hour['rides'].max()
-  
   peak_hour = avg_rides_per_hour[avg_rides_per_hour['rides'] == max_rides]['hour']
-  avg_rides_day = rides_per_hour[rides_per_hour['year'] == year].groupby(['weekday']).mean().reset_index()
+  
+  avg_rides_month_weekday = rides_per_hour[rides_per_hour['month'].isin(month)].groupby(['year','weekday']).mean().reset_index()
+  avg_rides_day = avg_rides_month_weekday[avg_rides_month_weekday['year'] == year]
   max_demand = avg_rides_day['rides'].max()
-  peak_day = avg_rides_day[rides_per_hour['rides']==max_demand]['weekday']
+  peak_day = avg_rides_day[avg_rides_day['rides']==max_demand]['weekday']
   peak_day = str(peak_day)[5:-29]
   available_docks = df_stations['total_bases'].sum()
 
