@@ -122,8 +122,11 @@ if selected == "Dashboard":
         if y == "boxplot":
                 fig = px.box(rides_per_hour_months[rides_per_hour_months['year']==year], x= 'weekday', y='rides', color='is_weekend')
         if y == "lineplot":
+                order = {"Monday":1, "Tuesday":2, "Wednesday":3, "Thursday":4, "Friday":5, "Saturday": 6, "Sunday":7}
                 rides_per_weekday_lineplot = rides_per_hour_months.groupby(['weekday','year'])['rides'].mean().reset_index()
-                fig = px.line(rides_per_weekday_lineplot[rides_per_weekday_lineplot['year']==year].sort_values(by='weekday'), x='weekday', y ='rides')
+                rides_per_weekday_lineplot['order'] = rides_per_weekday_lineplot['weekday'].map(order)
+                rides_per_weekday_lineplot.sort_values(by='order', inplace=True)
+                fig = px.line(rides_per_weekday_lineplot[rides_per_weekday_lineplot['year']==year], x='weekday', y ='rides')
         fig.update_layout(
                 showlegend = True,
                 width = 1400,
