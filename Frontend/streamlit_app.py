@@ -139,3 +139,6 @@ if selected == "Dashboard":
                 font = dict(color = "#383635", size = 15)
                 )
         st.write(fig)
+
+  with st.container():
+     st.subheader('Evolution of demand in the selected year')
