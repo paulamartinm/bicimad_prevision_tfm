@@ -97,10 +97,10 @@ if selected == "Dashboard":
    
   with st.container():
      
-     fig = px.box(rides_per_hour, x= 'hour', y='rides')
+     fig = px.box(rides_per_hour[rides_per_hour['year']==year], x= 'hour', y='rides')
      fig.update_layout(
                 showlegend = False,
-                width = 1000,
+                width = 1200,
                 height = 400,
                 margin = dict(l=1, r=1, b=1, t=1),
                 font = dict(color = "#383635", size = 15)
