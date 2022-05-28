@@ -142,4 +142,12 @@ if selected == "Dashboard":
 
   with st.container():
      st.subheader('Evolution of demand in the selected year')
-       fig = px.line(rides_per_hour[rides_per_hour_months['year']==year], x= 'datetime', y='rides')
+     fig = px.line(rides_per_hour[rides_per_hour_months['year']==year], x= 'datetime', y='rides')
+     fig.update_layout(
+                showlegend = True,
+                width = 1400,
+                height = 400,
+                margin = dict(l=1, r=1, b=1, t=1),
+                font = dict(color = "#383635", size = 15)
+                )
+     st.write(fig)
