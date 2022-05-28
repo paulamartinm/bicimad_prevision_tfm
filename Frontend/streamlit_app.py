@@ -108,7 +108,8 @@ if selected == "Dashboard":
         if y == "boxplot":
                 fig = px.box(rides_per_hour_months[rides_per_hour_months['year']==year], x= 'hour', y='rides', color='is_weekend')
         if y == "lineplot":
-                fig = px.line(rides_per_hour_months[rides_per_hour_months['year']==year], x='hour', y='rides')
+                
+                fig = px.line(rides_per_hour_months[rides_per_hour_months['year']==year], x='hour', y='rides', color='is_weekend')
         fig.update_layout(
                 showlegend = True,
                 width = 1400,
