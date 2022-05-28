@@ -106,7 +106,7 @@ if selected == "Dashboard":
      if x == "per hour":
        
         if y == "boxplot":
-                fig = px.box(rides_per_hour_months[rides_per_hour_months['year']==year], x= 'hour', y='rides', color='is_weekend')
+                fig = px.box(rides_per_hour_months[rides_per_hour_months['year']==year], x= 'hour', y='rides', color='is_weekend', markers = True)
         if y == "lineplot":
                 rides_per_hour_lineplot = rides_per_hour_months.groupby(['is_weekend','hour','year'])['rides'].mean().reset_index()
                 fig = px.line(rides_per_hour_lineplot[rides_per_hour_lineplot['year']==year], x='hour', y='rides', color='is_weekend')
@@ -126,7 +126,7 @@ if selected == "Dashboard":
                 rides_per_weekday_lineplot = rides_per_hour_months.groupby(['weekday','year'])['rides'].mean().reset_index()
                 rides_per_weekday_lineplot['order'] = rides_per_weekday_lineplot['weekday'].map(order)
                 rides_per_weekday_lineplot.sort_values(by='order', inplace=True)
-                fig = px.line(rides_per_weekday_lineplot[rides_per_weekday_lineplot['year']==year], x='weekday', y ='rides')
+                fig = px.line(rides_per_weekday_lineplot[rides_per_weekday_lineplot['year']==year], x='weekday', y ='rides', markers = True)
         fig.update_layout(
                 showlegend = True,
                 width = 1400,
