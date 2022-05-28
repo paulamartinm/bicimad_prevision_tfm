@@ -142,6 +142,8 @@ if selected == "Dashboard":
 
   with st.container():
      st.subheader('Evolution of demand in the selected year')
+     rides_per_hour['datetime'] = pd.to_datetime(rides_per_hour['datetime'])
+     rides_per_hour.sort_values(by='datetime', inplace=True)
      fig = px.line(rides_per_hour[rides_per_hour_months['year']==year], x= 'datetime', y='rides')
      fig.update_layout(
                 showlegend = True,
