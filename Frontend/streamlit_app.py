@@ -7,6 +7,7 @@ import numpy as np
 from streamlit_option_menu import option_menu
 import plotly.express as px
 import datetime
+import seaborn as sns
 
 
 st.set_page_config(layout="wide")
@@ -93,3 +94,16 @@ if selected == "Dashboard":
   col2.metric(label="Peak hour demand", value = peak_hour)
   col3.metric(label = "Peak day demand", value = peak_day)
   col4.metric(label = "Nº of available docks", value = available_docks)
+   
+  with st.container():
+     
+     fig = px.box(rides_per_hour, x= 'hour', y='rides')
+     fig.update_layout(
+                showlegend = False,
+                width = 1000,
+                height = 400,
+                margin = dict(l=1, r=1, b=1, t=1),
+                font = dict(color = "#383635", size = 15)
+        )
+      st.write(fig)
+   
