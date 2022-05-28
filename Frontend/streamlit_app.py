@@ -99,7 +99,7 @@ if selected == "Dashboard":
      rides_per_hour_months=rides_per_hour[rides_per_hour['month'].isin(month)]
      st.subheader('Distribution of demand')
      x=st.radio('Plot: ', ['per hour', 'per weekday'])
-     if x == "Per hour":
+     if x == "per hour":
        
         
         fig = px.box(rides_per_hour_months[rides_per_hour_months['year']==year], x= 'hour', y='rides', color='is_weekend')
@@ -111,7 +111,7 @@ if selected == "Dashboard":
                 font = dict(color = "#383635", size = 15)
                 )
         st.write(fig)
-     if x == "Per weekday":
+     if x == "per weekday":
         
         fig = px.box(rides_per_hour_months[rides_per_hour_months['year']==year], x= 'weekday', y='rides', color='is_weekend')
         fig.update_layout(
