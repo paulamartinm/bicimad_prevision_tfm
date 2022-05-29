@@ -158,7 +158,7 @@ if selected == "Dashboard":
                      buttons = list([
                              dict(count=1, label = "1d", step = "day", stepmode="backward"),
                              dict(count=1, label = "1m", step="month", stepmode="backward"),
-                             dict(count=6, label = "6m", step = "month", stepmode = "backward),
+                             dict(count=6, label = "6m", step = "month", stepmode = "backward"),
                              dict(step="all")])
                              ))
      st.write(fig)
