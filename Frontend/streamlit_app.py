@@ -57,11 +57,11 @@ if selected == "Prediction of demand":
                         font = dict(color = "#383635", size = 15)
                         )
                      fig.update_xaxes(
-                     rangeslider_visible = True,
-                     rangeselector=dict(
-                        buttons = list([
-                             dict(count=1, label = "1d", step = "day", stepmode="foreward"),
-                             dict(step="all")])
+                        rangeslider_visible = True,
+                        rangeselector=dict(
+                                buttons = list([
+                                        dict(count=1, label = "1d", step = "day", stepmode="foreward"),
+                                        dict(step="all")])
                              ))
                         
                      st.write(fig)
