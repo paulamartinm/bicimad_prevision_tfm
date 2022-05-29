@@ -60,7 +60,7 @@ if selected == "Prediction of demand":
                      rangeslider_visible = True,
                      rangeselector=dict(
                         buttons = list([
-                             dict(count=1, label = "1d", step = "day", stepmode="backward"),
+                             dict(count=1, label = "1d", step = "day", stepmode="foreward"),
                              dict(step="all")])
                              ))
                         
