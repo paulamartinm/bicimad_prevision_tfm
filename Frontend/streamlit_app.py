@@ -152,4 +152,13 @@ if selected == "Dashboard":
                 margin = dict(l=1, r=1, b=1, t=1),
                 font = dict(color = "#383635", size = 15)
                 )
+     fig.update_xaxes(
+             rangeslider_visible = True,
+             rangeselector=dict(
+                     buttons = list([
+                             dict(count=1, label = "1d", step = "day", stepmode="backward"),
+                             dict(count=1, label = "1m", step="month", stepmode="backward"),
+                             dict(count=6, label = "6m", step = "month", stepmode = "backward),
+                             dict(step="all")])
+                             ))
      st.write(fig)
