@@ -25,6 +25,7 @@ selected = option_menu(
 
 df_stations = pd.read_csv("Frontend/stations_final.csv")
 predictions_total = pd.read_csv("Frontend/predictions_all_stations.csv")
+predictions_per_zone = pd.read_csv("Frontend/predictions_per_zone.csv")
 rides_per_hour = pd.read_csv("Frontend/movements_grouped.csv")
 
 if selected == "Prediction of demand":
@@ -35,17 +36,35 @@ if selected == "Prediction of demand":
     with st.container():
         st.write("---")
         line_chart_data = predictions_total.copy()
-        fig = px.line(line_chart_data)
+        if visualization == "All stations":
+                fig = px.line(line_chart_data)
         
-        fig.update_layout(
-                showlegend = False,
-                width = 1000,
-                height = 400,
-                margin = dict(l=1, r=1, b=1, t=1),
-                font = dict(color = "#383635", size = 15)
-        )
-        st.write(fig)
-        #fig.update_xaxes(type='category')
+                fig.update_layout(
+                        showlegend = False,
+                        width = 1000,
+                        height = 400,
+                        margin = dict(l=1, r=1, b=1, t=1),
+                        font = dict(color = "#383635", size = 15)
+                )
+                st.write(fig)
+        if visualization == "Demand per zones":
+                     fig = px.line(predictions_per_zone, x= 'datetime', y='pred')
+                     fig.update_layout(
+                        showlegend = True,
+                        width = 1400,
+                        height = 400,
+                        margin = dict(l=1, r=1, b=1, t=1),
+                        font = dict(color = "#383635", size = 15)
+                        )
+                     fig.update_xaxes(
+                     rangeslider_visible = True,
+                     rangeselector=dict(
+                        buttons = list([
+                             dict(count=1, label = "1d", step = "day", stepmode="backward"),
+                             dict(step="all")])
+                             ))
+                        
+                     st.write(fig)
                 
         left_column, right_column = st.columns(2)
         with left_column:
