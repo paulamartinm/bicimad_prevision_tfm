@@ -68,6 +68,7 @@ if selected == "Prediction of demand":
                 
         left_column, right_column = st.columns(2)
         with left_column:
+            st.write("--")
             
             
      
