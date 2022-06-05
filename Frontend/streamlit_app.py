@@ -32,7 +32,7 @@ if selected == "Prediction of demand":
     visualization = st.sidebar.selectbox("Select the type of visualization: ", ["All stations", "Demand per zones"])
     if visualization == "Demand per zones":
         postal_code = st.sidebar.selectbox('Postal code', list(df_stations['postal_code'].unique()))
-    
+    scope = st.radio('Period: ', ['next 14 days', 'next 24 hours'])
     with st.container():
         st.header("Predictions for the next 14 days")
         line_chart_data = predictions_total.copy()
