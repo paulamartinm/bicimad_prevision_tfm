@@ -23,7 +23,7 @@ selected = option_menu(
 
 
 
-df_stations = pd.read_csv("Frontend/stations_final.csv")
+df_stations = pd.read_csv("Frontend/stations_postal_code.csv")
 predictions_total = pd.read_csv("Frontend/predictions_all_stations.csv")
 predictions_per_zone = pd.read_csv("Frontend/predictions_per_zone.csv")
 rides_per_hour = pd.read_csv("Frontend/movements_grouped.csv")
@@ -48,7 +48,7 @@ if selected == "Prediction of demand":
                 )
                 st.write(fig)
         if visualization == "Demand per zones":
-                     fig = px.line(predictions_per_zone, x= 'datetime', y='pred')
+                     fig = px.line(predictions_per_zone[predictions_per_zone['postal_code'] == postal_code], x= 'datetime', y='pred')
                      fig.update_layout(
                         showlegend = True,
                         width = 1400,
