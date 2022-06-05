@@ -34,7 +34,7 @@ if selected == "Prediction of demand":
         postal_code = st.sidebar.selectbox('Postal code', list(df_stations['postal_code'].unique()))
     
     with st.container():
-        st.header("Demand prediction BICIMAD")
+        st.header("Predictions for the next 14 days")
         line_chart_data = predictions_total.copy()
         if visualization == "All stations":
                 fig = px.line(line_chart_data)
