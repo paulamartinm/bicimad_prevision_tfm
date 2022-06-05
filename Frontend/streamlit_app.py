@@ -56,8 +56,8 @@ if selected == "Prediction of demand":
                      if scope == 'next 14 days':
                         predictions_per_zone_show = predictions_per_zone
                      predictions_zone = predictions_per_zone_show[predictions_per_zone_show['postal_code'] == postal_code]
-                     max_demand = predictions_zone_show['pred'].max()
-                     predictions_zone_max = predictions_zone_show[predictions_zone_show['pred']==max_demand]
+                     max_demand = predictions_zone['pred'].max()
+                     predictions_zone_max = predictions_zone[predictions_zone['pred']==max_demand]
                         
                      fig = px.line(predictions_zone, x= 'datetime', y='pred')
                      fig.update_layout(
