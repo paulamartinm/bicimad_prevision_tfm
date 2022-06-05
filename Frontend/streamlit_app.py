@@ -48,7 +48,11 @@ if selected == "Prediction of demand":
                 )
                 st.write(fig)
         if visualization == "Demand per zones":
-                     fig = px.line(predictions_per_zone[predictions_per_zone['postal_code'] == postal_code], x= 'datetime', y='pred')
+                     predictions_zone = predictions_per_zone[predictions_per_zone['postal_code'] == postal_code]
+                     max_demand = predictions_zone['pred'].max()
+                     predictions_zone_max = predictions_zone[predictions_zone['pred']==max_demand]
+                        
+                     fig = px.line(predictions_zone, x= 'datetime', y='pred')
                      fig.update_layout(
                         showlegend = True,
                         width = 1400,
@@ -68,12 +72,15 @@ if selected == "Prediction of demand":
                 
         left_column, right_column = st.columns(2)
         with left_column:
-            st.write("--")
-            
+            st.subheader("Some useful data")
+             col1, col2 = st.columns(2)
+             col1.metric(label="Peak demand hour", value = predictions_zone_max['datetime'])
+             col2.metric(label="Maximum demand", value = int(predictions_per_zone_max['pred']))           
             
      
             
         with right_column:    
+            st.subheader("Map with stations")
             df_stations['lat']= df_stations['latitude']
             df_stations['lon']=df_stations['longitude']
             df_stations = df_stations[['lat', 'lon', 'postal_code']]
