@@ -74,12 +74,12 @@ if selected == "Prediction of demand":
         with left_column:
             st.subheader("Some useful data")
             peak_hour_max_demand = predictions_zone[predictions_zone['pred']==max_demand]['hour']
-            peak_day_max_demand = predictions_zone[predictions_zone['pred']==max_demand]['day']
+            peak_day_max_demand = predictions_zone[predictions_zone['pred']==max_demand]['datetime']
             
                 
             st.metric(label="Maximum demand", value = int(max_demand))
             st.metric(label="Maximum demand hour", value = peak_hour_max_demand)
-            st.metric(label="Day of maximum demand", value = peak_day_max_demand)
+            st.metric(label="Day of maximum demand", value = str(peak_day_max_demand)[7:27])
                       
             
      
