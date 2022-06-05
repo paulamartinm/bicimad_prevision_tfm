@@ -75,8 +75,8 @@ if selected == "Prediction of demand":
             st.subheader("Some useful data")
             
                 
-            st.metric(label="Peak demand hour", value = predictions_zone_max['hour'])
-            st.metric(label="Maximum demand", value = predictions_per_zone_max['pred'])           
+            st.metric(label="Peak demand hour", value = max_demand)
+                      
             
      
             
