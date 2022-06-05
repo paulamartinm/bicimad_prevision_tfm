@@ -34,7 +34,10 @@ if selected == "Prediction of demand":
         postal_code = st.sidebar.selectbox('Postal code', list(df_stations['postal_code'].unique()))
     scope = st.sidebar.radio('Period: ', ['next 14 days', 'next 24 hours'])
     with st.container():
-        st.header("Predictions for the next 14 days")
+        if scope == 'next 14 days':
+                st.header("Predictions for the next 14 days")
+        if scope == 'next 24 hours':
+                st.header("Predictions for the next 24 hours")
         line_chart_data = predictions_total.copy()
         if visualization == "All stations":
                 fig = px.line(line_chart_data)
@@ -48,9 +51,13 @@ if selected == "Prediction of demand":
                 )
                 st.write(fig)
         if visualization == "Demand per zones":
-                     predictions_zone = predictions_per_zone[predictions_per_zone['postal_code'] == postal_code]
-                     max_demand = predictions_zone['pred'].max()
-                     predictions_zone_max = predictions_zone[predictions_zone['pred']==max_demand]
+                     if scope = 'next 24 hours':
+                        predictions_per_zone_show = predictions_per_zone[predictions_per_zone['day']=='2021-07-01']
+                     if scope == 'next 14 days':
+                        predictions_per_zone_show = predictions_per_zone
+                     predictions_zone = predictions_per_zone_show[predictions_per_zone_show['postal_code'] == postal_code]
+                     max_demand = predictions_zone_show['pred'].max()
+                     predictions_zone_max = predictions_zone_show[predictions_zone_show['pred']==max_demand]
                         
                      fig = px.line(predictions_zone, x= 'datetime', y='pred')
                      fig.update_layout(
