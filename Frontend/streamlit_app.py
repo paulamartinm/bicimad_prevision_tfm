@@ -75,7 +75,7 @@ if selected == "Prediction of demand":
             st.subheader("Some useful data")
             
                 
-            st.metric(label="Peak demand hour", value = max_demand)
+            st.metric(label="Maximum demand", value = int(max_demand))
                       
             
      
