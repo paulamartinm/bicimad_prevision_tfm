@@ -51,7 +51,7 @@ if selected == "Prediction of demand":
                 )
                 st.write(fig)
         if visualization == "Demand per zones":
-                     if scope = 'next 24 hours':
+                     if scope == 'next 24 hours':
                         predictions_per_zone_show = predictions_per_zone[predictions_per_zone['day']=='2021-07-01']
                      if scope == 'next 14 days':
                         predictions_per_zone_show = predictions_per_zone
