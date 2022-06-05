@@ -73,7 +73,7 @@ if selected == "Prediction of demand":
         left_column, right_column = st.columns(2)
         with left_column:
             st.subheader("Some useful data")
-            col1, col2 = st.columns(2)
+            column1, column2 = st.columns(2)
                 
             #col1.metric(label="Peak demand hour", value = predictions_zone_max['datetime'])
             #col2.metric(label="Maximum demand", value = ipredictions_per_zone_max['pred'])           
