@@ -8,6 +8,7 @@ from streamlit_option_menu import option_menu
 import plotly.express as px
 import datetime
 import seaborn as sns
+import plotly.graph_objects as go
 
 
 st.set_page_config(layout="wide")
@@ -131,7 +132,11 @@ if selected == "Prediction of demand":
                 stations_postal_code = df_stations    
             
             if model == "Compare models":
-                 st.table(data = evaluation_models)
+                 fig = go.Figure(data=go.Table(header=dict(values=list(evaluation_models[['model', 'MSE, 'MAE', 'RMSE', 'R2']].columns), fill_color='FD8E72',
+                                                                                          align = left),
+                                               cells = disct(values=[evaluation_models.model, evaluation_models.MSE, evaluation_models.MAE, evaluation_models.RMSE,
+                                                                     evaluation_models.R2], fill_color = 'E5ECF6, align = 'left')))
+                 st.write(fig)                                                                         
             else:
                 st.metric(label="Maximum demand", value = int(max_demand))
                 st.metric(label="Total stations", value = stations_postal_code['id'].count())
