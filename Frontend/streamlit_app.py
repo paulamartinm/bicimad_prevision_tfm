@@ -33,6 +33,8 @@ if selected == "Prediction of demand":
     if visualization == "Demand per zones":
         postal_code = st.sidebar.selectbox('Postal code', list(df_stations['postal_code'].unique()))
     scope = st.sidebar.radio('Period: ', ['next 14 days', 'next 24 hours'])
+    if visualization == "All stations":
+        model = st.sidebar.radio('Model', ['Random Forest', 'Light GBM'])
     with st.container():
         if scope == 'next 14 days':
                 st.header("Predictions for the next 14 days")
@@ -44,9 +46,10 @@ if selected == "Prediction of demand":
                         predictions_global_show = predictions_total[predictions_total['day']=='2021-07-01']
                 if scope == "next 14 days":
                         predictions_global_show = predictions_total
-                max_demand = predictions_global_show['pred'].max()
-                predictions_global_max = predictions_global_show[predictions_global_show['pred']==max_demand]
-                fig = px.line(predictions_global_show, x = 'datetime', y = 'pred')
+                predictions_global_final = predictions_global_show[predictions_global_show['model']==model]
+                max_demand = predictions_global_final['pred'].max()
+                predictions_global_max = predictions_global_final[predictions_global_final['pred']==max_demand]
+                fig = px.line(predictions_global_final, x = 'datetime', y = 'pred')
         
                 fig.update_layout(
                         showlegend = False,
