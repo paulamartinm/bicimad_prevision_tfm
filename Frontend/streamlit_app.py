@@ -132,7 +132,7 @@ if selected == "Prediction of demand":
                 stations_postal_code = df_stations    
             
             if model == "Compare models":
-                 fig = go.Figure(data=go.Table(header=dict(values=list(evaluation_models[['model', 'MSE, 'MAE', 'RMSE', 'R2']].columns), fill_color='FD8E72',
+                 fig = go.Figure(data=go.Table(header=dict(values=list(evaluation_models[['model', 'MSE', 'MAE', 'RMSE', 'R2']].columns), fill_color='FD8E72',
                                                                                           align = left),
                                                cells = disct(values=[evaluation_models.model, evaluation_models.MSE, evaluation_models.MAE, evaluation_models.RMSE,
                                                                      evaluation_models.R2], fill_color = 'E5ECF6, align = 'left')))
