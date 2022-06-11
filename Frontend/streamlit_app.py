@@ -38,9 +38,15 @@ if selected == "Prediction of demand":
                 st.header("Predictions for the next 14 days")
         if scope == 'next 24 hours':
                 st.header("Predictions for the next 24 hours")
-        line_chart_data = predictions_total.copy()
+        
         if visualization == "All stations":
-                fig = px.line(line_chart_data)
+                if scope == "next 24 hours":
+                        predictions_global_show = predictions_total[predictions_total['day']=='2021-07-01']
+                if scope == "next 14 days":
+                        predictions_global_show = predictions_total
+                max_demand = predictions_global_show['pred'].max()
+                predictions_global_max = predictions_global_show[predictions_global_show['pred']==max_demand]
+                fig = px.line(predictions_global_show, x = 'datetime', y = 'pred')
         
                 fig.update_layout(
                         showlegend = False,
@@ -49,6 +55,17 @@ if selected == "Prediction of demand":
                         margin = dict(l=1, r=1, b=1, t=1),
                         font = dict(color = "#383635", size = 15)
                 )
+                fig.update_xaxes(
+                        rangeslider_visible = True,
+                        rangeselector=dict(
+                                buttons = list([
+                                        dict(count=1, label = "1d", step = "day", stepmode="todate"),
+                                        dict(step="all")])
+                             ))
+                        
+                     
+              
+                
                 st.write(fig)
         if visualization == "Demand per zones":
                      if scope == 'next 24 hours':
