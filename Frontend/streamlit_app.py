@@ -82,11 +82,13 @@ if selected == "Prediction of demand":
             st.subheader("Some useful data")
             peak_hour_max_demand = predictions_zone[predictions_zone['pred']==max_demand]['hour']
             peak_day_max_demand = predictions_zone[predictions_zone['pred']==max_demand]['datetime']
+            stations_postal_code = df_stations[df_stations['postal_code'] == postal_code]
             
                 
             st.metric(label="Maximum demand", value = int(max_demand))
             st.metric(label="Maximum demand hour", value = peak_hour_max_demand)
             st.metric(label="Day of maximum demand", value = str(peak_day_max_demand)[7:27])
+            st.metric(label="Total stations", value = stations_postal_code['id'].count())
                       
             
      
