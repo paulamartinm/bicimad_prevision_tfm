@@ -34,7 +34,7 @@ if selected == "Prediction of demand":
         postal_code = st.sidebar.selectbox('Postal code', list(df_stations['postal_code'].unique()))
     scope = st.sidebar.radio('Period: ', ['next 24 hours', 'next 14 days'])
     if visualization == "All stations":
-        model = st.sidebar.radio('Model:', ['Random Forest', 'Light GBM'])
+        model = st.sidebar.radio('Model:', ['Random Forest', 'Light GBM', 'Catboost'])
     with st.container():
         if scope == 'next 14 days':
                 st.header("Predictions for the next 14 days")
