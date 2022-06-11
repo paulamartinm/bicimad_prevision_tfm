@@ -84,14 +84,14 @@ if selected == "Prediction of demand":
             peak_day_max_demand = predictions_zone[predictions_zone['pred']==max_demand]['datetime']
             stations_postal_code = df_stations[df_stations['postal_code'] == postal_code]
             
-            col1, col2 =  st.columns(2)    
-            col1.metric(label="Maximum demand", value = int(max_demand))
-            col2.metric(label="Total stations", value = stations_postal_code['id'].count())
-            col1, col2 =  st.columns(2)  
+               
+            st.metric(label="Maximum demand", value = int(max_demand))
+            st.metric(label="Total stations", value = stations_postal_code['id'].count())
+            #col1, col2 =  st.columns(2)  
             #st.metric(label="Maximum demand hour", value = peak_hour_max_demand)
-            col1.metric(label="Day of maximum demand", value = str(peak_day_max_demand)[7:27])
+            st.metric(label="Day of maximum demand", value = str(peak_day_max_demand)[7:27])
             
-            col2.metric(label = "Total docks", value = stations_postal_code['total_bases'].sum())
+            st.metric(label = "Total docks", value = stations_postal_code['total_bases'].sum())
                       
             
      
