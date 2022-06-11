@@ -34,7 +34,7 @@ if selected == "Prediction of demand":
         postal_code = st.sidebar.selectbox('Postal code', list(df_stations['postal_code'].unique()))
     scope = st.sidebar.radio('Period: ', ['next 24 hours', 'next 14 days'])
     if visualization == "All stations":
-        model = st.sidebar.radio('Model:', ['Random Forest', 'Light GBM', 'Catboost'])
+        model = st.sidebar.radio('Model:', ['Random Forest', 'Light GBM', 'Catboost', 'Compare models'])
     with st.container():
         if scope == 'next 14 days':
                 st.header("Predictions for the next 14 days")
@@ -46,30 +46,33 @@ if selected == "Prediction of demand":
                         predictions_global_show = predictions_total[predictions_total['day']=='2021-07-01']
                 if scope == "next 14 days":
                         predictions_global_show = predictions_total
-                predictions_global_final = predictions_global_show[predictions_global_show['model']==model]
-                max_demand = predictions_global_final['pred'].max()
-                predictions_global_max = predictions_global_final[predictions_global_final['pred']==max_demand]
-                fig = px.line(predictions_global_final, x = 'datetime', y = 'pred')
+                if model == 'Compare models':
+                        fig = px.line(predictions_global_show, x = 'datetime', y = 'pred', color= 'model')
+                if model != 'Compare models':
+                        predictions_global_final = predictions_global_show[predictions_global_show['model']==model]
+                        max_demand = predictions_global_final['pred'].max()
+                        predictions_global_max = predictions_global_final[predictions_global_final['pred']==max_demand]
+                        fig = px.line(predictions_global_final, x = 'datetime', y = 'pred')
         
-                fig.update_layout(
-                        showlegend = False,
-                        width = 1400,
-                        height = 400,
-                        margin = dict(l=1, r=1, b=1, t=1),
-                        font = dict(color = "#383635", size = 15)
-                )
-                fig.update_xaxes(
-                        rangeslider_visible = True,
-                        rangeselector=dict(
-                                buttons = list([
+                        fig.update_layout(
+                                showlegend = False,
+                                width = 1400,
+                                height = 400,
+                                margin = dict(l=1, r=1, b=1, t=1),
+                                font = dict(color = "#383635", size = 15)
+                        )
+                        fig.update_xaxes(
+                                rangeslider_visible = True,
+                                rangeselector=dict(
+                                        buttons = list([
                                         dict(count=1, label = "1d", step = "day", stepmode="todate"),
                                         dict(step="all")])
-                             ))
+                                ))
                         
                      
               
                 
-                st.write(fig)
+                        st.write(fig)
         if visualization == "Demand per zones":
                      if scope == 'next 24 hours':
                         predictions_per_zone_show = predictions_per_zone[predictions_per_zone['day']=='2021-07-01']
