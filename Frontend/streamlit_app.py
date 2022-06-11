@@ -131,9 +131,9 @@ if selected == "Prediction of demand":
                 peak_day_max_demand = predictions_global_show[predictions_global_show['pred']==max_demand]['datetime']
                 stations_postal_code = df_stations    
             
-            if model == "Compare models":
+            if model == "Compare models" and visualization == "All stations":
                 st.table(data = evaluation_models)                                                                       
-            if model != "Compare models":
+            if model != "Compare models" :
                 st.metric(label="Maximum demand", value = int(max_demand))
                 st.metric(label="Total stations", value = stations_postal_code['id'].count())
                 #col1, col2 =  st.columns(2)  
