@@ -137,8 +137,8 @@ if selected == "Prediction of demand":
                                                cells = dict(values=[evaluation_models.model, evaluation_models.MSE, evaluation_models.MAE, evaluation_models.RMSE,
                                                                     evaluation_models.R2], fill_color = '#E5ECF6', align = 'left')))
                         
-                fig.update_layout(margin = dict(l=5,r=5,b=10, t=10)) 
-                st.write(fig)                                                                         
+                 fig.update_layout(margin = dict(l=5,r=5,b=10, t=10)) 
+                 st.write(fig)                                                                         
             else:
                 st.metric(label="Maximum demand", value = int(max_demand))
                 st.metric(label="Total stations", value = stations_postal_code['id'].count())
