@@ -185,7 +185,7 @@ if selected == "Dashboard":
 
   col1, col2, col3, col4 = st.columns(4)
   col1.metric(label="Avg. demand per hour", value = average_demand_year, delta = percentual_variation_demand_year)
-  col2.metric(label="Peak hour demand", value = peak_hour + " h")
+  col2.metric(label="Peak hour demand", value = str(peak_hour) + " h")
   col3.metric(label = "Peak day demand", value = peak_day)
   col4.metric(label = "Nº of available docks", value = available_docks)
    
