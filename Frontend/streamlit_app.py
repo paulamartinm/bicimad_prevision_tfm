@@ -132,7 +132,7 @@ if selected == "Prediction of demand":
                 stations_postal_code = df_stations    
             
             if model == "Compare models":
-                 st.table(data = evaluation_models, columns = [['model', 'MSE', 'MAE', 'RMSE', 'R2']])                                                                       
+                 st.table(data = evaluation_models, columns = (['model', 'MSE', 'MAE', 'RMSE', 'R2'])                                                                       
             else:
                 st.metric(label="Maximum demand", value = int(max_demand))
                 st.metric(label="Total stations", value = stations_postal_code['id'].count())
