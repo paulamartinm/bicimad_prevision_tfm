@@ -50,7 +50,7 @@ if selected == "Prediction of demand":
                         fig = px.line(predictions_global_show, x = 'datetime', y = 'pred', color = 'model')
  
                         fig.update_layout(
-                                showlegend = False,
+                                showlegend = True,
                                 width = 1400,
                                 height = 400,
                                 margin = dict(l=1, r=1, b=1, t=1),
