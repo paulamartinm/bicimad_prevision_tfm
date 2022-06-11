@@ -47,7 +47,7 @@ if selected == "Prediction of demand":
                 if scope == "next 14 days":
                         predictions_global_show = predictions_total
                 if model == 'Compare models':
-                        fig = px.line(predictions_global_show, x = 'datetime', y = 'pred', color= 'model')
+                        fig = px.line(predictions_global_show, x = 'datetime', y = 'pred')
  
                         fig.update_layout(
                                 showlegend = False,
