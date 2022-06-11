@@ -27,6 +27,7 @@ df_stations = pd.read_csv("Frontend/stations_postal_code.csv")
 predictions_total = pd.read_csv("Frontend/predictions_all_stations.csv")
 predictions_per_zone = pd.read_csv("Frontend/predictions_per_zone.csv")
 rides_per_hour = pd.read_csv("Frontend/movements_grouped.csv")
+evaluation_models = pd.read_csv("Frontend/evaluation_models_global_demand.csv")
 
 if selected == "Prediction of demand":
     visualization = st.sidebar.selectbox("Select the type of visualization: ", ["All stations", "Demand per zones"])
@@ -130,7 +131,7 @@ if selected == "Prediction of demand":
                 stations_postal_code = df_stations    
             
             if model == "Compare models":
-                 st.table(data = df_stations)
+                 st.table(data = evaluation_models)
             else:
                 st.metric(label="Maximum demand", value = int(max_demand))
                 st.metric(label="Total stations", value = stations_postal_code['id'].count())
