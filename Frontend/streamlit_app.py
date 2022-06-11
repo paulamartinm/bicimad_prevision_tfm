@@ -173,7 +173,7 @@ if selected == "Dashboard":
   
   avg_rides_months = rides_per_hour[rides_per_hour['month'].isin(month)].groupby(['year', 'hour']).mean().reset_index()
   avg_rides_per_hour = avg_rides_months[avg_rides_months['year']==year]
-  max_rides_id = avg_rides_per_hour['rides'].idmax()
+  max_rides_id = avg_rides_per_hour['rides'].idxmax()
   max_rides = avg_rides_per_hour.loc[max_rides_id,'rides']
   peak_hour = avg_rides_per_hour.loc[max_rides_id,'hour']
   
