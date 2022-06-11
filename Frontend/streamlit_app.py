@@ -50,7 +50,7 @@ if selected == "Prediction of demand":
         
                 fig.update_layout(
                         showlegend = False,
-                        width = 1000,
+                        width = 1400,
                         height = 400,
                         margin = dict(l=1, r=1, b=1, t=1),
                         font = dict(color = "#383635", size = 15)
@@ -97,10 +97,14 @@ if selected == "Prediction of demand":
         left_column, right_column = st.columns(2)
         with left_column:
             st.subheader("Some useful data")
-            peak_hour_max_demand = predictions_zone[predictions_zone['pred']==max_demand]['hour']
-            peak_day_max_demand = predictions_zone[predictions_zone['pred']==max_demand]['datetime']
-            stations_postal_code = df_stations[df_stations['postal_code'] == postal_code]
-            
+            if visualization == "Demand per zones":
+                peak_hour_max_demand = predictions_zone[predictions_zone['pred']==max_demand]['hour']
+                peak_day_max_demand = predictions_zone[predictions_zone['pred']==max_demand]['datetime']
+                stations_postal_code = df_stations[df_stations['postal_code'] == postal_code]
+            if visualization == "All stations":
+                peak_hour_demand = predictions_global_show[predictions_global_show['pred']==max_demand]['hour']
+                peak_day_max_demand = predictions_global_show[predictions_global_show['pred']==max_demand]['datetime']
+                stations_postal_code = df_stations    
                
             st.metric(label="Maximum demand", value = int(max_demand))
             st.metric(label="Total stations", value = stations_postal_code['id'].count())
