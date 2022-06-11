@@ -218,7 +218,7 @@ if selected == "Dashboard":
         if y == "boxplot":
                 rides_per_hour_months['order'] = rides_per_hour_months['weekday'].map(order)
                 rides_per_hour_months.sort_values(by='order', inplace=True)
-                fig = px.box(rides_per_hour_months[rides_per_hour_months['year']==year], x= 'weekday', y='rides', color='is_weekend', labels = {0: 'weekday', 1: 'weekend})
+                fig = px.box(rides_per_hour_months[rides_per_hour_months['year']==year], x= 'weekday', y='rides', color='is_weekend')
                 
         if y == "lineplot":
                 
