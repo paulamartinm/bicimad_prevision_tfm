@@ -48,6 +48,22 @@ if selected == "Prediction of demand":
                         predictions_global_show = predictions_total
                 if model == 'Compare models':
                         fig = px.line(predictions_global_show, x = 'datetime', y = 'pred', color= 'model')
+ 
+                        fig.update_layout(
+                                showlegend = False,
+                                width = 1400,
+                                height = 400,
+                                margin = dict(l=1, r=1, b=1, t=1),
+                                font = dict(color = "#383635", size = 15)
+                        )
+                        fig.update_xaxes(
+                                rangeslider_visible = True,
+                                rangeselector=dict(
+                                        buttons = list([
+                                        dict(count=1, label = "1d", step = "day", stepmode="todate"),
+                                        dict(step="all")])
+                                ))
+                        
                 if model != 'Compare models':
                         predictions_global_final = predictions_global_show[predictions_global_show['model']==model]
                         max_demand = predictions_global_final['pred'].max()
