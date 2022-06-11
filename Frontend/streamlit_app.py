@@ -124,7 +124,7 @@ if selected == "Prediction of demand":
                 peak_hour_max_demand = predictions_zone[predictions_zone['pred']==max_demand]['hour']
                 peak_day_max_demand = predictions_zone[predictions_zone['pred']==max_demand]['datetime']
                 stations_postal_code = df_stations[df_stations['postal_code'] == postal_code]
-            if visualization == "All stations":
+            if visualization == "All stations" and model != "Compare models":
                 peak_hour_demand = predictions_global_show[predictions_global_show['pred']==max_demand]['hour']
                 peak_day_max_demand = predictions_global_show[predictions_global_show['pred']==max_demand]['datetime']
                 stations_postal_code = df_stations    
