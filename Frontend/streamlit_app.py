@@ -128,14 +128,17 @@ if selected == "Prediction of demand":
                 peak_hour_demand = predictions_global_show[predictions_global_show['pred']==max_demand]['hour']
                 peak_day_max_demand = predictions_global_show[predictions_global_show['pred']==max_demand]['datetime']
                 stations_postal_code = df_stations    
-               
-            st.metric(label="Maximum demand", value = int(max_demand))
-            st.metric(label="Total stations", value = stations_postal_code['id'].count())
-            #col1, col2 =  st.columns(2)  
-            #st.metric(label="Maximum demand hour", value = peak_hour_max_demand)
-            st.metric(label="Day of maximum demand", value = str(peak_day_max_demand)[7:27])
             
-            st.metric(label = "Total docks", value = stations_postal_code['total_bases'].sum())
+            if model == "Compare models":
+                 st.table(data = df_stations)
+            else:
+                st.metric(label="Maximum demand", value = int(max_demand))
+                st.metric(label="Total stations", value = stations_postal_code['id'].count())
+                #col1, col2 =  st.columns(2)  
+                #st.metric(label="Maximum demand hour", value = peak_hour_max_demand)
+                st.metric(label="Day of maximum demand", value = str(peak_day_max_demand)[7:27])
+            
+                st.metric(label = "Total docks", value = stations_postal_code['total_bases'].sum())
                       
             
      
