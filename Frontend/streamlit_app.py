@@ -273,33 +273,61 @@ if selected == "Dashboard demand":
 
 
     # Average demand calculations
+    if visualization == "All stations":    
+        average_demand_month = rides_per_hour[
+                rides_per_hour['month'].isin(month)].groupby(['year']).mean().reset_index()
 
-    average_demand_month = rides_per_hour[
-        rides_per_hour['month'].isin(month)].groupby(['year']).mean().reset_index()
+        average_demand_year = int(
+                average_demand_month[average_demand_month['year'] == year]['rides'])
 
-    average_demand_year = int(
-        average_demand_month[average_demand_month['year'] == year]['rides'])
+        average_demand_year_before = int(
+                average_demand_month[average_demand_month['year'] == year - 1]['rides'])
+        percentual_variation_demand_year = round(
+                ((average_demand_year - average_demand_year_before) / average_demand_year_before) * 100, 2)
 
-    average_demand_year_before = int(
-        average_demand_month[average_demand_month['year'] == year - 1]['rides'])
-    percentual_variation_demand_year = round(
-        ((average_demand_year - average_demand_year_before) / average_demand_year_before) * 100, 2)
+        avg_rides_months = rides_per_hour[rides_per_hour['month'].isin(
+                month)].groupby(['year', 'hour']).mean().reset_index()
+        avg_rides_per_hour = avg_rides_months[avg_rides_months['year'] == year]
+        max_rides_id = avg_rides_per_hour['rides'].idxmax()
+        max_rides = avg_rides_per_hour.loc[max_rides_id, 'rides']
+        peak_hour = avg_rides_per_hour.loc[max_rides_id, 'hour']
 
-    avg_rides_months = rides_per_hour[rides_per_hour['month'].isin(
-          month)].groupby(['year', 'hour']).mean().reset_index()
-    avg_rides_per_hour = avg_rides_months[avg_rides_months['year'] == year]
-    max_rides_id = avg_rides_per_hour['rides'].idxmax()
-    max_rides = avg_rides_per_hour.loc[max_rides_id, 'rides']
-    peak_hour = avg_rides_per_hour.loc[max_rides_id, 'hour']
+        avg_rides_month_weekday = rides_per_hour[rides_per_hour['month'].isin(
+                month)].groupby(['year', 'weekday']).mean().reset_index()
+        avg_rides_day = avg_rides_month_weekday[avg_rides_month_weekday['year'] == year]
+        max_demand = avg_rides_day['rides'].max()
+        peak_day = avg_rides_day[avg_rides_day['rides'] == max_demand]['weekday']
+        peak_day = str(peak_day)[5:-29]
+        available_docks = df_stations['total_bases'].sum()
+      
+    if visualization == "Demand per zones":
+         rides_per_hour_station = rides_per_station_2021[rides_per_station_2021['postal_code'] == postal_code]
+         average_demand_month = rides_per_hour_station[
+                rides_per_hour_station['month'].isin(month)].groupby(['year']).mean().reset_index()
 
-    avg_rides_month_weekday = rides_per_hour[rides_per_hour['month'].isin(
-        month)].groupby(['year', 'weekday']).mean().reset_index()
-    avg_rides_day = avg_rides_month_weekday[avg_rides_month_weekday['year'] == year]
-    max_demand = avg_rides_day['rides'].max()
-    peak_day = avg_rides_day[avg_rides_day['rides'] == max_demand]['weekday']
-    peak_day = str(peak_day)[5:-29]
-    available_docks = df_stations['total_bases'].sum()
+        average_demand_year = int(
+                average_demand_month[average_demand_month['year'] == year]['rides'])
 
+        average_demand_year_before = int(
+                average_demand_month[average_demand_month['year'] == year]['rides'])
+        percentual_variation_demand_year = round(
+                ((average_demand_year - average_demand_year_before) / average_demand_year_before) * 100, 2)
+
+        avg_rides_months = rides_per_hour_station[rides_per_hour_station['month'].isin(
+                month)].groupby(['year', 'hour']).mean().reset_index()
+        avg_rides_per_hour = avg_rides_months[avg_rides_months['year'] == year]
+        max_rides_id = avg_rides_per_hour['rides'].idxmax()
+        max_rides = avg_rides_per_hour.loc[max_rides_id, 'rides']
+        peak_hour = avg_rides_per_hour.loc[max_rides_id, 'hour']
+
+        avg_rides_month_weekday = rides_per_hour_station[rides_per_hour_station['month'].isin(
+                month)].groupby(['year', 'weekday']).mean().reset_index()
+        avg_rides_day = avg_rides_month_weekday[avg_rides_month_weekday['year'] == year]
+        max_demand = avg_rides_day['rides'].max()
+        peak_day = avg_rides_day[avg_rides_day['rides'] == max_demand]['weekday']
+        peak_day = str(peak_day)[5:-29]
+        df_docks = df_stations[df_stations['postal_code'] == postal_code]
+        available_docks = df_docks['total_bases'].sum()       
     col1, col2, col3, col4 = st.columns(4)
 
     col1.metric(
