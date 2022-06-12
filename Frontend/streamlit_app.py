@@ -226,18 +226,19 @@ if selected == "Prediction of demand":
 
         # RIGHT SIDE VISUALIZATION
         with right_column:
+            if visualization == "All stations" OR stations == "Individual zone":
 
-            st.subheader(" Map with stations")
-            df_stations['lat'] = df_stations['latitude']
-            df_stations['lon'] = df_stations['longitude']
-            df_stations = df_stations[['lat', 'lon', 'postal_code']]
+                st.subheader(" Map with stations")
+                df_stations['lat'] = df_stations['latitude']
+                df_stations['lon'] = df_stations['longitude']
+                df_stations = df_stations[['lat', 'lon', 'postal_code']]
 
-            if visualization == "Demand per zones":
+                if visualization == "Demand per zones":
                 st.map(df_stations[df_stations['postal_code'] == postal_code])
 
-            if visualization == "All stations":
+                if visualization == "All stations":
 
-                st.map(df_stations)
+                        st.map(df_stations)
 
 ###########################
 # DASHBOARD VISUALIZATION DEMAND #
