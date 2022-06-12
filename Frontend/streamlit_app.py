@@ -226,7 +226,7 @@ if selected == "Prediction of demand":
 
         # RIGHT SIDE VISUALIZATION
         with right_column:
-            if visualization == "All stations" OR stations == "Individual zone":
+            if visualization == "All stations" or stations == "Individual zone":
 
                 st.subheader(" Map with stations")
                 df_stations['lat'] = df_stations['latitude']
