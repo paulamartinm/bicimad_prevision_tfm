@@ -23,6 +23,7 @@ df_stations = pd.read_csv("Frontend/stations_postal_code.csv")
 predictions_total = pd.read_csv("Frontend/predictions_all_stations.csv")
 predictions_per_zone = pd.read_csv("Frontend/predictions_per_zone.csv")
 rides_per_hour = pd.read_csv("Frontend/movements_grouped.csv")
+rides_per_station_2021 = pd.read_csv("Frontend/rides_per_station_2021.zip")
 evaluation_models = pd.read_csv("Frontend/evaluation_models_global_demand.csv")
 
 is_weekend = {
@@ -259,6 +260,17 @@ if selected == "Dashboard demand":
         [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
         default=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
         format_func=lambda x: month_options.get(x))
+
+    visualization = st.sidebar.selectbox(
+        "Select the type of visualization: ",
+        ["All stations", "Demand per zones"])
+        
+    if visualization == "Demand per zones":
+        postal_code = st.sidebar.selectbox(
+            'Postal code',
+            list(df_stations['postal_code'].unique()))
+        model = "default"
+
 
     # Average demand calculations
 
