@@ -305,7 +305,7 @@ if selected == "Dashboard demand":
          average_demand_month = rides_per_hour_station[
                 rides_per_hour_station['month'].isin(month)].groupby(['year']).mean().reset_index()
 
-         average_demand_year = int(average_demand_month['rides'])
+         average_demand_year = average_demand_month['rides'].astype(int)
 
          #average_demand_year_before = int(average_demand_month[average_demand_month['year'] == year]['rides'])
          percentual_variation_demand_year = null
