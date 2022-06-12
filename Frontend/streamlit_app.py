@@ -252,7 +252,7 @@ if selected == "Prediction of demand":
                         #height=400,
                        # margin=dict(l=1, r=1, b=1, t=1),
                         #font=dict(color="#383635", size=15)
-                        )
+                        #)
 
                 st.write(fig)
                 
