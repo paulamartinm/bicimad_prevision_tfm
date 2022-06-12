@@ -248,7 +248,7 @@ if selected == "Prediction of demand":
                 fig = px.pie(pie_chart, values = 'postal_code', names = 'model', hover_name='model')
                 fig.update_layout(
                         showlegend=True,
-                        width=400,
+                        width=600,
                         height=400,
                         margin=dict(l=1, r=1, b=1, t=1),
                         font=dict(color="#383635", size=15)
