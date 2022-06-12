@@ -263,7 +263,7 @@ if selected == "Prediction of demand":
                                     stepmode="todate"),
                                     dict(step="all")])))
                 st.write(fig)
-                st.write(values)
+                
 
 ###########################
 # DASHBOARD VISUALIZATION DEMAND #
