@@ -348,7 +348,7 @@ if selected == "Dashboard":
                     color='is_weekend',
                     markers=True)
 
-             fig.update_layout(
+            fig.update_layout(
                     showlegend=True,
                     width=1400,
                     height=400,
