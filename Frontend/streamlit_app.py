@@ -243,7 +243,7 @@ if selected == "Prediction of demand":
                         st.map(df_stations)
             else:
                 st.subheader("Models used for predictions")
-                labels = ["Random Forest", "XGBoost", "Catboost", "Light GBM"]
+                labels = ["Random Forest", "XGBoost", "Catboost", "Light GBM", "XGboost", "Randomforest"]
                 values = models_used.groupby('model').count()
                 fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.5)])
                 fig.update_layout(
