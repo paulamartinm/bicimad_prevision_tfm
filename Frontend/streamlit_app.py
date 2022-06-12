@@ -246,7 +246,7 @@ if selected == "Prediction of demand":
                 labels = ["Random Forest", "XGBoost", "Catboost", "Light GBM", "XGboost", "Randomforest"]
                 pie_chart = models_used.groupby('model').count().reset_index()
                 fig = px.pie(pie_chart, values = 'postal_code', names = 'model', hover_name='model')
-                #fig.update_layout(
+                fig.update_layout(
                         showlegend=True,
                         width=400,
                         height=400,
