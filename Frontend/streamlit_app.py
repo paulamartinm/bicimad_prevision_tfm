@@ -245,14 +245,14 @@ if selected == "Prediction of demand":
                 st.subheader("Models used for predictions")
                 labels = ["Random Forest", "XGBoost", "Catboost", "Light GBM", "XGboost", "Randomforest"]
                 pie_chart = models_used.groupby('model').count().reset_index()
-                fig = px.pie(pie_chart, values = 'postal_code')
+                fig = px.pie(pie_chart, values = 'postal_code', names = 'model', hover_name='model')
                 #fig.update_layout(
-                        #showlegend=True,
-                        #width=400,
-                        #height=400,
-                       # margin=dict(l=1, r=1, b=1, t=1),
-                        #font=dict(color="#383635", size=15)
-                        #)
+                        showlegend=True,
+                        width=400,
+                        height=400,
+                        margin=dict(l=1, r=1, b=1, t=1),
+                        font=dict(color="#383635", size=15)
+                        )
 
                 st.write(fig)
                 
