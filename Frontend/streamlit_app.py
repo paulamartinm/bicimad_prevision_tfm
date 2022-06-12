@@ -15,8 +15,8 @@ st.set_page_config(layout="wide")
 # Navigation menu
 selected = option_menu(
         menu_title=None,
-        options=["Prediction of demand", "Dashboard"],
-        icons=["bar-chart-line", "bicycle"],
+        options=["Prediction of demand", "Dashboard", "Stations"],
+        icons=["bar-chart-line", "bicycle", "geo"],
         orientation="horizontal")
 
 df_stations = pd.read_csv("Frontend/stations_postal_code.csv")
