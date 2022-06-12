@@ -244,8 +244,8 @@ if selected == "Prediction of demand":
             else:
                 st.subheader("Models used for predictions")
                 labels = ["Random Forest", "XGBoost", "Catboost", "Light GBM", "XGboost", "Randomforest"]
-                values = models_used.groupby('model').count()
-                fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.5)])
+                pie_chart = models_used.groupby('model').count().reset_index()
+                fig = px.pie(pie_chart, values = 'postal_code')
                 fig.update_layout(
                         showlegend=True,
                         width=1400,
