@@ -246,22 +246,14 @@ if selected == "Prediction of demand":
                 labels = ["Random Forest", "XGBoost", "Catboost", "Light GBM", "XGboost", "Randomforest"]
                 pie_chart = models_used.groupby('model').count().reset_index()
                 fig = px.pie(pie_chart, values = 'postal_code')
-                fig.update_layout(
-                        showlegend=True,
-                        width=400,
-                        height=400,
-                        margin=dict(l=1, r=1, b=1, t=1),
-                        font=dict(color="#383635", size=15)
+                #fig.update_layout(
+                        #showlegend=True,
+                        #width=400,
+                        #height=400,
+                       # margin=dict(l=1, r=1, b=1, t=1),
+                        #font=dict(color="#383635", size=15)
                         )
-                fig.update_xaxes(
-                        rangeslider_visible=True,
-                        rangeselector=dict(
-                                buttons=list([dict(
-                                    count=1,
-                                    label="1d",
-                                    step="day",
-                                    stepmode="todate"),
-                                    dict(step="all")])))
+
                 st.write(fig)
                 
 
