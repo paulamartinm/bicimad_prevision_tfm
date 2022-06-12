@@ -330,8 +330,7 @@ if selected == "Dashboard":
         if x == "per hour":
             if y == "boxplot":
                 fig = px.box(
-                    rides_per_hour_months[
-                        rides_per_hour_months['year'] == year],
+                    rides_per_hour_months[rides_per_hour_months['year'] == year],
                     x='hour',
                     y='rides',
                     color='is_weekend')
