@@ -25,6 +25,10 @@ predictions_per_zone = pd.read_csv("Frontend/predictions_per_zone.csv")
 rides_per_hour = pd.read_csv("Frontend/movements_grouped.csv")
 evaluation_models = pd.read_csv("Frontend/evaluation_models_global_demand.csv")
 
+is_weekend = {
+        1: "Weekend",
+        0: "Weekdays"}
+rides_per_hour['day_week'] = rides_per_hour['is_weekend'].map(is_weekend)
 
 #######################################
 # PREDICTIONS OF DEMAND VISUALIZATION #
@@ -214,7 +218,7 @@ if selected == "Prediction of demand":
         # RIGHT SIDE VISUALIZATION
         with right_column:
 
-            st.subheader("Map with stations")
+            st.subheader(" Map with stations")
             df_stations['lat'] = df_stations['latitude']
             df_stations['lon'] = df_stations['longitude']
             df_stations = df_stations[['lat', 'lon', 'postal_code']]
@@ -333,7 +337,7 @@ if selected == "Dashboard":
                     rides_per_hour_months[rides_per_hour_months['year'] == year],
                     x='hour',
                     y='rides',
-                    color='is_weekend')
+                    color='day_week')
 
             elif y == "lineplot":
                 rides_per_hour_lineplot = rides_per_hour_months.groupby(
@@ -343,7 +347,7 @@ if selected == "Dashboard":
                     rides_per_hour_lineplot[rides_per_hour_lineplot['year'] == year],
                     x='hour',
                     y='rides',
-                    color='is_weekend',
+                    color='day_week',
                     markers=True)
 
             fig.update_layout(
