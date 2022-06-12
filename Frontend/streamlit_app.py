@@ -245,8 +245,9 @@ if selected == "Prediction of demand":
                 st.subheader("Models used for predictions")
                 labels = ["Random Forest", "XGBoost", "Catboost", "Light GBM"]
                 values = models_used.groupby('model').count()
-                fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.3)])
+                fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.5)])
                 st.write(fig)
+                st.write(values)
 
 ###########################
 # DASHBOARD VISUALIZATION DEMAND #
