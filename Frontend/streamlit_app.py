@@ -53,6 +53,9 @@ if selected == "Prediction of demand":
         model = st.sidebar.radio(
             'Model:',
             ['Random Forest', 'Light GBM', 'Catboost', 'Compare models'])
+        stations = st.sidebar.radio(
+            'Comparison of all zones or individual zones: ',
+            ['Comparison all zones', 'Individual zone'])
 
     # Container 1 PREDICTIONS
     with st.container():
