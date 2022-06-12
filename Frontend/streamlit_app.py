@@ -15,7 +15,7 @@ st.set_page_config(layout="wide")
 # Navigation menu
 selected = option_menu(
         menu_title=None,
-        options=["Prediction of demand", "Dashboard", "Stations"],
+        options=["Prediction of demand", "Dashboard demand", "Stations"],
         icons=["bar-chart-line", "bicycle", "geo"],
         orientation="horizontal")
 
@@ -231,10 +231,10 @@ if selected == "Prediction of demand":
                 st.map(df_stations)
 
 ###########################
-# DASHBOARD VISUALIZATION #
+# DASHBOARD VISUALIZATION DEMAND #
 ###########################
 
-if selected == "Dashboard":
+if selected == "Dashboard demand":
 
     month_options = {
         1: "January",
