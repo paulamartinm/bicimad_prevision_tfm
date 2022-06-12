@@ -8,7 +8,7 @@ import plotly.express as px
 # import numpy as np
 # import datetime
 # import seaborn as sns
-# import plotly.graph_objects as go
+import plotly.graph_objects as go
 
 
 st.set_page_config(layout="wide")
@@ -18,13 +18,15 @@ selected = option_menu(
         options=["Prediction of demand", "Dashboard demand"],
         icons=["bar-chart-line", "bicycle"],
         orientation="horizontal")
-
+#Creating the dataframes needed
 df_stations = pd.read_csv("Frontend/stations_postal_code.csv")
 predictions_total = pd.read_csv("Frontend/predictions_all_stations.csv")
 predictions_per_zone = pd.read_csv("Frontend/predictions_per_zone.csv")
 rides_per_hour = pd.read_csv("Frontend/movements_grouped.csv")
 rides_per_station_2021 = pd.read_csv("Frontend/rides_per_station_2021.zip")
 evaluation_models = pd.read_csv("Frontend/evaluation_models_global_demand.csv")
+models_used = predictions_per_zone.groupby('postal_code').max().reset_index()
+models_used = models_used[['postal_code', 'model']]
 
 is_weekend = {
         1: "Weekend",
@@ -239,6 +241,12 @@ if selected == "Prediction of demand":
                 if visualization == "All stations":
 
                         st.map(df_stations)
+            else:
+                st.subheader("Models used for predictions")
+                labels = ["Random Forest", "XGBoost", "Catboost", "Light GBM"]
+                values = models_used.groupby('model').count()
+                fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.3)])
+                st.write(fig)
 
 ###########################
 # DASHBOARD VISUALIZATION DEMAND #
