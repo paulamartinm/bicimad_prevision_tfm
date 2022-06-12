@@ -246,6 +246,22 @@ if selected == "Prediction of demand":
                 labels = ["Random Forest", "XGBoost", "Catboost", "Light GBM"]
                 values = models_used.groupby('model').count()
                 fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.5)])
+                fig.update_layout(
+                        showlegend=True,
+                        width=1400,
+                        height=400,
+                        margin=dict(l=1, r=1, b=1, t=1),
+                        font=dict(color="#383635", size=15)
+                        )
+                fig.update_xaxes(
+                        rangeslider_visible=True,
+                        rangeselector=dict(
+                                buttons=list([dict(
+                                    count=1,
+                                    label="1d",
+                                    step="day",
+                                    stepmode="todate"),
+                                    dict(step="all")])))
                 st.write(fig)
                 st.write(values)
 
