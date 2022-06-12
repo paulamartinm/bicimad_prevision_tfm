@@ -50,7 +50,7 @@ if selected == "Prediction of demand":
         model = "default"
         stations = st.sidebar.radio(
             'Comparison of all zones or individual zones: ',
-            ['Comparison all zones', 'Individual zone'])
+            ['Individual zone', 'Comparison all zones'])
     elif visualization == "All stations":
         model = st.sidebar.radio(
             'Model:',
@@ -146,13 +146,18 @@ if selected == "Prediction of demand":
 
                 predictions_per_zone_show = predictions_per_zone
             
-            predictions_zone = predictions_per_zone_show[
-            predictions_per_zone_show['postal_code'] == postal_code]
-            max_demand = predictions_zone['pred'].max()
-            predictions_zone_max = predictions_zone[
-                 predictions_zone['pred'] == max_demand]
+            if stations == 'Comparison all zones':
+                predictions_zone = predictions_per_zone_show
+                max_demand = predictions_zone['pred'].max()
+                predictions_zone_max = predictions_zone[predictions_zone['pred'] == max_demand]
+            elif stations == 'Individual zone':
+                predictions_zone = predictions_per_zone_show[
+                predictions_per_zone_show['postal_code'] == postal_code]
+                max_demand = predictions_zone['pred'].max()
+                predictions_zone_max = predictions_zone[
+                        predictions_zone['pred'] == max_demand]
 
-            fig = px.line(predictions_zone, x='datetime', y='pred')
+            fig = px.line(predictions_zone, x='datetime', y='pred', color = 'postal_code')
 
             fig.update_layout(
                         showlegend=True,
