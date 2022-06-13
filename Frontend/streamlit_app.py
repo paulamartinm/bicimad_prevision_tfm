@@ -56,7 +56,7 @@ if selected == "Prediction of demand":
     elif visualization == "All stations":
         model = st.sidebar.radio(
             'Model:',
-            ['Random Forest', 'Light GBM', 'Catboost', 'Compare models'])
+            ['Random Forest', 'XGBoost','Light GBM', 'Catboost', 'Compare models'])
 
 
     # Container 1 PREDICTIONS
