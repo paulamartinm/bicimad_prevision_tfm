@@ -27,7 +27,13 @@ rides_per_station_2021 = pd.read_csv("Frontend/rides_per_station_2021.zip")
 evaluation_models = pd.read_csv("Frontend/evaluation_models_global_demand.csv")
 models_used = predictions_per_zone.groupby('postal_code').max().reset_index()
 models_used = models_used[['postal_code', 'model']]
-
+#Possible options for models
+dict_models = {'RandomForest': 'Random Forest', 'Random Forest': 'Random Forest', 'Catboost': 'CatBoost', 'CatBoost': 'CatBoost', 
+               'XGBoost': 'XGBoost', 'XGboost': 'XGBoost', 'Light GBM': 'Light GBM'
+              }
+#Apply dictionary to column models
+models_used['model'].replace(dict_models, inplace=True)
+#Dictionary to convert 1 and 0 in weekend and weekdays
 is_weekend = {
         1: "Weekend",
         0: "Weekdays"}
