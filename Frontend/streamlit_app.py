@@ -201,7 +201,7 @@ if selected == "Prediction of demand":
 
             st.write(fig)
 
-        left_column, middle_column,right_column = st.columns([1,2,1.5])
+        left_column, middle_column,right_column = st.columns([1,2,1])
         
         #MIDDLE SIDE VISUALIZATION
         with middle_column:
