@@ -296,8 +296,11 @@ if selected == "Prediction of demand":
                 if visualization == "All stations":
 
                         st.map(df_stations)
-                        
+                #create the folium map with location of interest        
                 mapa = folium.Map(location = [df.latitude.mean(),df.longitude.mean()], zoom_start=14,control_scale = True)
+                #add markers for stations
+                for index, location_info in df.iterrows():
+                        folium.Marker([location_info["latitude"], location_info["longitude"]],popup=location_info["name"].add_to(mapa)
                 show_map = st_folium(mapa)
             else:
                 st.subheader("Models used for predictions")
