@@ -3,3 +3,4 @@ streamlit_option_menu
 plotly
 seaborn
 streamlit-aggrid
+streamlit-folium
