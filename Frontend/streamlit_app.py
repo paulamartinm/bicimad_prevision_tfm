@@ -425,7 +425,7 @@ if selected == "Dashboard demand":
 
             elif y == "lineplot":
                 rides_per_hour_lineplot = rides_per_hour_months.groupby(
-                    ['is_weekend', 'hour', 'year'])['rides'].mean().reset_index()
+                    ['day_week', 'hour', 'year'])['rides'].mean().reset_index()
 
                 fig = px.line(
                     rides_per_hour_lineplot[rides_per_hour_lineplot['year'] == year],
