@@ -381,9 +381,12 @@ if selected == "Dashboard demand":
 
     # Container 2 PLOTS OF EVOLUTION OF DEMAND
     with st.container():
-
-        rides_per_hour_months = rides_per_hour[rides_per_hour['month'].isin(
-            month)]
+        if visualization == 'All stations':
+                rides_per_hour_months = rides_per_hour[rides_per_hour['month'].isin(
+                        month)]
+        elif visualization == 'Demand per zones':
+                rides_per_hour_months = rides_per_station_2021[rides_per_station_2021['postal_code'] == postal_code]
+                rides_per_hour_months = rides_per_hour_months[rides_per_hour_months['month'].isin(month)]
         st.subheader('Distribution of demand ')
 
         order = {
