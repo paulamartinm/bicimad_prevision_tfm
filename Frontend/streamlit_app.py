@@ -359,7 +359,7 @@ if selected_switch == "Dashboard demand":
             list(df_stations['postal_code'].unique()))
         model = "default"
     
-    st.sidebar.button("Show stations information")
+    detail_stations = st.sidebar.button("Show stations information")
 
     # Average demand calculations
     if visualization == "All stations":    
@@ -526,7 +526,7 @@ if selected_switch == "Dashboard demand":
     # Container 3 REPRESENTATION OF THE TIME SERIES
  
     with st.container():
-        if st.button('Show stations information'):
+        if detail_stations == True:
                 st.subheader('Stations information')
         else:
                 st.subheader('Evolution of demand in the selected year')
