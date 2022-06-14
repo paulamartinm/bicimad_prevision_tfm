@@ -250,8 +250,8 @@ if selected == "Prediction of demand":
                           value=stations_postal_code['id'].count())
                 # col1, col2 =  st.columns(2)
                 # st.metric(label="Maximum demand hour", value = peak_hour_max_demand)
-                st.metric(label="Day of maximum demand",
-                          value=str(peak_day_max_demand)[7:27])
+                #st.metric(label="Day of maximum demand",
+                          #value=str(peak_day_max_demand)[7:27])
 
                 st.metric(label="Total docks",
                           value=stations_postal_code['total_bases'].sum())
