@@ -210,9 +210,10 @@ if selected == "Prediction of demand":
                 if visualization == "Demand per zones":
                      df = df_stations[df_stations['postal_code']==postal_code]
                      st.dataframe(data = df[['name', 'address', 'total_bases']]) 
+                     AgGrid(df)
                 elif visualization == "All stations":
                      st.dataframe(data = df_stations[['name', 'address', 'postal_code', 'total_bases']])
-
+                     AgGrid(df_stations)
         # LEFT SIDE VISUALIZATION
         with left_column:
 
