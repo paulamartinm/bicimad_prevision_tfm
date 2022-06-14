@@ -290,14 +290,14 @@ if selected == "Prediction of demand":
                 df_stations['lon'] = df_stations['longitude']
                 df_stations = df_stations[['lat', 'lon', 'postal_code']]
 
-                if visualization == "Demand per zones":
-                        st.map(df_stations[df_stations['postal_code'] == postal_code])
+                #if visualization == "Demand per zones":
+                        #st.map(df_stations[df_stations['postal_code'] == postal_code])
 
-                if visualization == "All stations":
+                #if visualization == "All stations":
 
-                        st.map(df_stations)
+                        #st.map(df_stations)
                 #create the folium map with location of interest        
-                mapa = folium.Map(location = [df.latitude.mean(),df.longitude.mean()], zoom_start=14,control_scale = True)
+                mapa = folium.Map(location = [df.latitude.mean(),df.longitude.mean()], zoom_start=8,control_scale = True)
                 #add markers for stations
                 for index, location_info in df.iterrows():
                         folium.Marker([location_info["latitude"], location_info["longitude"]],popup=location_info["name"]).add_to(mapa)
