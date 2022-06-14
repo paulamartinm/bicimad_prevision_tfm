@@ -235,7 +235,7 @@ if selected == "Prediction of demand":
                         reload_data=True)
                 
                 selected = grid_response['selected_rows']
-                pd.DataFrame(selected)
+                st.table(selected)
         # LEFT SIDE VISUALIZATION
         with left_column:
 
