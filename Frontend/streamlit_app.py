@@ -210,11 +210,11 @@ if selected == "Prediction of demand":
                 st.subheader("Stations list")
                 if visualization == "Demand per zones":
                      df = df_stations[df_stations['postal_code']==postal_code]
-                     df = df[['name', 'address', 'total_bases']]
+                     df = df[['id','name', 'address', 'total_bases']]
                      
                     
                 elif visualization == "All stations":
-                     df = df_stations[['name', 'address', 'postal_code', 'total_bases']]
+                     df = df_stations[['id','name', 'address', 'postal_code', 'total_bases']]
                 
                 #AgGrid(df)
                 gb = GridOptionsBuilder.from_dataframe(df)
@@ -236,6 +236,7 @@ if selected == "Prediction of demand":
                 
                 selected = grid_response['selected_rows']
                 st.table(selected)
+                st.table(df_stations)
         # LEFT SIDE VISUALIZATION
         with left_column:
 
