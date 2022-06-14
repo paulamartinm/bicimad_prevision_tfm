@@ -359,8 +359,7 @@ if selected_switch == "Dashboard demand":
             list(df_stations['postal_code'].unique()))
         model = "default"
     
-    detail_stations = st.sidebar.option_menu(menu_title=None, options=["Evolution demand", "Stations information"],
-                                                               icons=["bar-chart-line", "pin"],orientation="vertical")
+    st.sidebar.selectbox('Bottom information', ["Evolution demand", "Stations information"])
 
     # Average demand calculations
     if visualization == "All stations":    
