@@ -211,10 +211,30 @@ if selected == "Prediction of demand":
                      df = df_stations[df_stations['postal_code']==postal_code]
                      df = df[['name', 'address', 'total_bases']]
                      
-                     AgGrid(df)
+                    
                 elif visualization == "All stations":
                      df = df_stations[['name', 'address', 'postal_code', 'total_bases']]
-                     AgGrid(df)
+                
+                AgGrid(df)
+                gb = GridOptionsBuilder.from_dataframe(df)
+                gb.configure_side_bar()
+                gb.configure_selection('multiple', use_checkbox=True, groupSelectsChildren="Group checkbox select children")
+                gridOptions = gb.build()
+                
+                grid_response = AgGrid(
+                        df,
+                        gridOptions=gridOptions,
+                        data_return_mode = 'AS_INPUT',
+                        update_mode = 'MODEL_CHANGED',
+                        fit_columns_on_grid_load=False,
+                        theme = 'blue',
+                        enable_enterprise_modules = True,
+                        height=350,
+                        width = '100%',
+                        reload_data=True)
+                df = grid_response['df']
+                selected = grid_response['selected_rows']
+                new_df = pd.DataFrame(selected)
         # LEFT SIDE VISUALIZATION
         with left_column:
 
