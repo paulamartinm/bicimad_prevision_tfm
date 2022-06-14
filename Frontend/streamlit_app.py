@@ -23,7 +23,13 @@ df_stations = pd.read_csv("Frontend/stations_postal_code.csv")
 predictions_total = pd.read_csv("Frontend/predictions_all_stations.csv")
 predictions_per_zone = pd.read_csv("Frontend/predictions_per_zone.csv")
 rides_per_hour = pd.read_csv("Frontend/movements_grouped.csv")
+#Preparing the dataset rides_per_station_2021
 rides_per_station_2021 = pd.read_csv("Frontend/rides_per_station_2021.zip")
+rides_per_station_2021 = rides_per_station_2021.merge(df_stations, how='inner', left_on = 'id', right_on = 'id')
+rides_per_station_2021['postal_code'] = rides_per_station_2021['postal_code_y']
+rides_per_station_2021 = rides_per_station_2021[['postal_code', 'rides', 'weekday', 'month', 'year', 'day', 'time', 'datetime']]
+rides_per_station_2021 = rides_per_station_2021.groupby(['postal_code', 'weekday','month', 'year', 'datetime', 'time'])['rides'].sum().reset_index()
+#Preparing the dataset with models used
 evaluation_models = pd.read_csv("Frontend/evaluation_models_global_demand.csv")
 models_used = predictions_per_zone.groupby('postal_code').max().reset_index()
 models_used = models_used[['postal_code', 'model']]
@@ -337,8 +343,7 @@ if selected == "Dashboard demand":
          average_demand_month = rides_per_hour_station[
                 rides_per_hour_station['month'].isin(month)].groupby(['year']).mean().reset_index()
 
-         average_demand_year = average_demand_month['rides'].astype(int)
-
+         average_demand_year = int(average_demand_month['rides'])
          #average_demand_year_before = int(average_demand_month[average_demand_month['year'] == year]['rides'])
          percentual_variation_demand_year = 0
 
