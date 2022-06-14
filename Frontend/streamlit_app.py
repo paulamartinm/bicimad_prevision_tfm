@@ -27,8 +27,8 @@ rides_per_hour = pd.read_csv("Frontend/movements_grouped.csv")
 rides_per_station_2021 = pd.read_csv("Frontend/rides_per_station_2021.zip")
 rides_per_station_2021 = rides_per_station_2021.merge(df_stations, how='inner', left_on = 'id', right_on = 'id')
 rides_per_station_2021['postal_code'] = rides_per_station_2021['postal_code_y']
-rides_per_station_2021 = rides_per_station_2021[['postal_code', 'rides', 'weekday', 'month', 'year', 'day', 'time', 'datetime']]
-rides_per_station_2021 = rides_per_station_2021.groupby(['postal_code', 'weekday','month', 'year', 'datetime', 'time'])['rides'].sum().reset_index()
+rides_per_station_2021 = rides_per_station_2021[['postal_code', 'rides', 'weekday', 'month', 'year', 'day', 'hour','time', 'datetime']]
+rides_per_station_2021 = rides_per_station_2021.groupby(['postal_code', 'weekday','month', 'year', 'day','hour', 'datetime', 'time'])['rides'].sum().reset_index()
 #Preparing the dataset with models used
 evaluation_models = pd.read_csv("Frontend/evaluation_models_global_demand.csv")
 models_used = predictions_per_zone.groupby('postal_code').max().reset_index()
