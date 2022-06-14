@@ -219,7 +219,7 @@ if selected == "Prediction of demand":
                 #AgGrid(df)
                 gb = GridOptionsBuilder.from_dataframe(df)
                 gb.configure_side_bar()
-                gb.configure_selection('multiple', use_checkbox=True, groupSelectsChildren="Group checkbox select children")
+                
                 gridOptions = gb.build()
                 selected = df
                 grid_response = AgGrid(
@@ -234,8 +234,8 @@ if selected == "Prediction of demand":
                         width = '100%',
                         reload_data=True)
                 
-                selected = grid_response['selected_rows']
-                st.table(selected)
+                
+                
                 
         # LEFT SIDE VISUALIZATION
         with left_column:
