@@ -43,8 +43,17 @@ models_used['model'].replace(dict_models, inplace=True)
 is_weekend = {
         1: "Weekend",
         0: "Weekdays"}
-rides_per_hour['day_week'] = rides_per_hour['is_weekend'].map(is_weekend)
 
+is_weekend_2 = {
+        "Monday": "Weekdays",
+        "Tuesday": "Weekdays",
+        "Wednesday": "Weekdays",
+        "Thursday": "Weekdays",
+        "Friday": "Weekdays",
+        "Saturday": "Weekend",
+        "Sunday": "Weekend"}
+rides_per_hour['day_week'] = rides_per_hour['is_weekend'].map(is_weekend)
+rides_per_station_2021['day_week'] = rides_per_station_2021['weekday'].map(is_weekend_2)
 #######################################
 # PREDICTIONS OF DEMAND VISUALIZATION #
 #######################################
