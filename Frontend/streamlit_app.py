@@ -236,7 +236,7 @@ if selected == "Prediction of demand":
                 
                 selected = grid_response['selected_rows']
                 st.table(selected)
-                st.table(df_stations)
+                
         # LEFT SIDE VISUALIZATION
         with left_column:
 
@@ -297,8 +297,7 @@ if selected == "Prediction of demand":
 
                         st.map(df_stations)
                         
-                mapa = folium.Map(location = [df_stations.latitude.mean(),df_stations.longitude.mean()],
-                                  zoom_start=14,control_scale = True)
+                mapa = folium.Map(location = [df_stations.latitude.mean(),df_stations.longitude.mean()], zoom_start=14,control_scale = True)
                 show_map = st_folium(mapa)
             else:
                 st.subheader("Models used for predictions")
