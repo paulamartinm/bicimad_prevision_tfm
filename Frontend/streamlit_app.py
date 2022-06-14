@@ -56,6 +56,7 @@ is_weekend_2 = {
         "Sunday": "Weekend"}
 rides_per_hour['day_week'] = rides_per_hour['is_weekend'].map(is_weekend)
 rides_per_station_2021['day_week'] = rides_per_station_2021['weekday'].map(is_weekend_2)
+
 #######################################
 # PREDICTIONS OF DEMAND VISUALIZATION #
 #######################################
@@ -523,47 +524,37 @@ if selected_switch == "Dashboard demand":
             st.write(fig)
 
     # Container 3 REPRESENTATION OF THE TIME SERIES
+ 
     with st.container():
+        if st.button('Show stations information'):
+                st.subheader('Stations information')
+        else:
+                st.subheader('Evolution of demand in the selected year')
+                rides_per_hour['datetime'] = pd.to_datetime(rides_per_hour['datetime'])
+                rides_per_hour.sort_values(by='datetime', inplace=True)
+                rides_per_hour_months['datetime'] = pd.to_datetime(rides_per_hour_months['datetime'])
+                rides_per_hour_months.sort_values(by='datetime', inplace = True)
 
-        st.subheader('Evolution of demand in the selected year')
-        rides_per_hour['datetime'] = pd.to_datetime(rides_per_hour['datetime'])
-        rides_per_hour.sort_values(by='datetime', inplace=True)
-        rides_per_hour_months['datetime'] = pd.to_datetime(rides_per_hour_months['datetime'])
-        rides_per_hour_months.sort_values(by='datetime', inplace = True)
+                fig = px.line(
+                        rides_per_hour_months[
+                                rides_per_hour_months['year'] == year],
+                        x='datetime',
+                        y='rides')
 
-        fig = px.line(
-            rides_per_hour_months[
-                rides_per_hour_months['year'] == year],
-            x='datetime',
-            y='rides')
+                fig.update_layout(
+                        showlegend=True,
+                        width=1400,
+                        height=400,
+                        margin=dict(l=1, r=1, b=1, t=1),
+                        font=dict(color="#383635", size=15))
 
-        fig.update_layout(
-            showlegend=True,
-            width=1400,
-            height=400,
-            margin=dict(l=1, r=1, b=1, t=1),
-            font=dict(color="#383635", size=15))
+               fig.update_xaxes(
+                        rangeslider_visible=True,
+                        rangeselector=dict(
+                        buttons=list([
+                                dict(count=1, label="1d",step="day",stepmode="backward"),
+                                dict(count=1,label="1m",step="month",stepmode="backward"),
+                                dict(count=6,label="6m",step="month",stepmode="backward"),
+                                dict(step="all")])))
 
-        fig.update_xaxes(
-            rangeslider_visible=True,
-            rangeselector=dict(
-                buttons=list([
-                    dict(
-                        count=1,
-                        label="1d",
-                        step="day",
-                        stepmode="backward"),
-                    dict(
-                        count=1,
-                        label="1m",
-                        step="month",
-                        stepmode="backward"),
-                    dict(
-                        count=6,
-                        label="6m",
-                        step="month",
-                        stepmode="backward"),
-                    dict(
-                        step="all")])))
-
-        st.write(fig)
+                st.write(fig)
