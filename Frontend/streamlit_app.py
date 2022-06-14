@@ -216,7 +216,7 @@ if selected == "Prediction of demand":
                 elif visualization == "All stations":
                      df = df_stations[['name', 'address', 'postal_code', 'total_bases']]
                 
-                AgGrid(df)
+                #AgGrid(df)
                 gb = GridOptionsBuilder.from_dataframe(df)
                 gb.configure_side_bar()
                 gb.configure_selection('multiple', use_checkbox=True, groupSelectsChildren="Group checkbox select children")
@@ -235,7 +235,7 @@ if selected == "Prediction of demand":
                         reload_data=True)
                 
                 selected = grid_response['selected_rows']
-                new_df = pd.DataFrame(selected)
+                pd.DataFrame(selected)
         # LEFT SIDE VISUALIZATION
         with left_column:
 
@@ -295,6 +295,8 @@ if selected == "Prediction of demand":
                 if visualization == "All stations":
 
                         st.map(df_stations)
+                        
+                #mapa = folium.Map(location = df
             else:
                 st.subheader("Models used for predictions")
                 labels = ["Random Forest", "XGBoost", "Catboost", "Light GBM", "XGboost", "Randomforest"]
