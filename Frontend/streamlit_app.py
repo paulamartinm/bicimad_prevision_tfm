@@ -528,6 +528,35 @@ if selected_switch == "Dashboard demand":
     with st.container():
         if detail_stations == True:
                 st.subheader('Stations information')
+                column1, column2 = st.columns([2,1])
+                        #MIDDLE SIDE VISUALIZATION
+                with column1: 
+                        st.subheader("Stations list")
+                        if visualization == "Demand per zones":
+                                df = df_stations[df_stations['postal_code']==postal_code]
+                                df = df[['id','name', 'address', 'total_bases', 'latitude', 'longitude']]
+                     
+                    
+                        elif visualization == "All stations":
+                                df = df_stations[['id','name', 'address', 'postal_code', 'total_bases', 'latitude', 'longitude']]
+                
+                
+                        gb = GridOptionsBuilder.from_dataframe(df)
+                        gb.configure_side_bar()
+                
+                        gridOptions = gb.build()
+                        
+                        grid_response = AgGrid(
+                                df,
+                                gridOptions=gridOptions,
+                                data_return_mode = 'AS_INPUT',
+                                update_mode = 'MODEL_CHANGED',
+                                fit_columns_on_grid_load=False,
+                                theme = 'blue',
+                                enable_enterprise_modules = True,
+                                height=350,
+                                width = '100%',
+                                reload_data=True)
         else:
                 st.subheader('Evolution of demand in the selected year')
                 rides_per_hour['datetime'] = pd.to_datetime(rides_per_hour['datetime'])
