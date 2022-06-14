@@ -359,7 +359,8 @@ if selected_switch == "Dashboard demand":
             list(df_stations['postal_code'].unique()))
         model = "default"
     
-    detail_stations = st.sidebar.button("Show stations information")
+    detail_stations = st.sidebar.selected_switch = option_menu(menu_title=None, options=["Evolution demand", "Time series information"],
+                                                               icons=["bar-chart-line", "bicycle"],orientation="vertical")
 
     # Average demand calculations
     if visualization == "All stations":    
@@ -526,7 +527,7 @@ if selected_switch == "Dashboard demand":
     # Container 3 REPRESENTATION OF THE TIME SERIES OR STATIONS INFORMATION
  
     with st.container():
-        if detail_stations == True:
+        if detail_stations == "Time series information":
                 st.subheader('Stations information')
                 column1, column2 = st.columns([2,1])
                         #MIDDLE SIDE VISUALIZATION
@@ -567,7 +568,7 @@ if selected_switch == "Dashboard demand":
                                 folium.Marker([location_info["latitude"], location_info["longitude"]],popup=location_info["name"]).add_to(mapa)
                         show_map = st_folium(mapa)
                         
-        elif detail_stations == False:
+        elif detail_stations == "Evolution demand":
                 st.subheader('Evolution of demand in the selected year')
                 rides_per_hour['datetime'] = pd.to_datetime(rides_per_hour['datetime'])
                 rides_per_hour.sort_values(by='datetime', inplace=True)
