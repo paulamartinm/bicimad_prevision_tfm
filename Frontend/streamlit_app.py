@@ -567,7 +567,7 @@ if selected_switch == "Dashboard demand":
                                 folium.Marker([location_info["latitude"], location_info["longitude"]],popup=location_info["name"]).add_to(mapa)
                         show_map = st_folium(mapa)
                         
-        else:
+        elif detail_stations == False:
                 st.subheader('Evolution of demand in the selected year')
                 rides_per_hour['datetime'] = pd.to_datetime(rides_per_hour['datetime'])
                 rides_per_hour.sort_values(by='datetime', inplace=True)
