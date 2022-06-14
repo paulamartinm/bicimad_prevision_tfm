@@ -210,11 +210,11 @@ if selected == "Prediction of demand":
                 st.subheader("Stations list")
                 if visualization == "Demand per zones":
                      df = df_stations[df_stations['postal_code']==postal_code]
-                     df = df[['id','name', 'address', 'total_bases']]
+                     df = df[['id','name', 'address', 'total_bases', 'latitude', 'longitude']]
                      
                     
                 elif visualization == "All stations":
-                     df = df_stations[['id','name', 'address', 'postal_code', 'total_bases']]
+                     df = df_stations[['id','name', 'address', 'postal_code', 'total_bases', 'latitude', 'longitude']]
                 
                 #AgGrid(df)
                 gb = GridOptionsBuilder.from_dataframe(df)
@@ -297,7 +297,8 @@ if selected == "Prediction of demand":
 
                         st.map(df_stations)
                         
-                #mapa = folium.Map(location = df
+                mapa = folium.Map(location = [selected.latitude.mean(),selected.longitude.mean()],
+                                  zoom_start=14,control_scale = True)
             else:
                 st.subheader("Models used for predictions")
                 labels = ["Random Forest", "XGBoost", "Catboost", "Light GBM", "XGboost", "Randomforest"]
