@@ -297,8 +297,9 @@ if selected == "Prediction of demand":
 
                         st.map(df_stations)
                         
-                mapa = folium.Map(location = [selected.latitude.mean(),selected.longitude.mean()],
+                mapa = folium.Map(location = [df_stations.latitude.mean(),df_stations.longitude.mean()],
                                   zoom_start=14,control_scale = True)
+                show_map = st_folium(mapa)
             else:
                 st.subheader("Models used for predictions")
                 labels = ["Random Forest", "XGBoost", "Catboost", "Light GBM", "XGboost", "Randomforest"]
