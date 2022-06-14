@@ -454,7 +454,7 @@ if selected == "Dashboard demand":
                         rides_per_hour_months['year'] == year],
                     x='weekday',
                     y='rides',
-                    color='is_weekend')
+                    color='day_week')
 
             elif y == "lineplot":
 
