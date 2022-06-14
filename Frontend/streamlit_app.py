@@ -10,7 +10,8 @@ import plotly.express as px
 # import seaborn as sns
 import plotly.graph_objects as go
 from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
-
+from streamlit_folium import st_folium
+import folium
 
 st.set_page_config(layout="wide")
 # Navigation menu
