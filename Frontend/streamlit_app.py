@@ -15,7 +15,7 @@ import folium
 
 st.set_page_config(layout="wide")
 # Navigation menu
-selected = option_menu(
+selected_switch = option_menu(
         menu_title=None,
         options=["Prediction of demand", "Dashboard demand"],
         icons=["bar-chart-line", "bicycle"],
@@ -60,7 +60,7 @@ rides_per_station_2021['day_week'] = rides_per_station_2021['weekday'].map(is_we
 # PREDICTIONS OF DEMAND VISUALIZATION #
 #######################################
 
-if selected == "Prediction of demand":
+if selected_switch == "Prediction of demand":
 
     scope = st.sidebar.radio('Period: ', ['next 24 hours', 'next 14 days'])
 
@@ -322,7 +322,7 @@ if selected == "Prediction of demand":
 # DASHBOARD VISUALIZATION DEMAND #
 ###########################
 
-if selected == "Dashboard demand":
+if selected_switch == "Dashboard demand":
 
     month_options = {
         1: "January",
