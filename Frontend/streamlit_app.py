@@ -207,7 +207,7 @@ if selected == "Prediction of demand":
         with middle_column:
                 st.subheader("Stations list")
                 if visualization == "Demand per zones":
-                     st.dataframe(data = df_stations[df_stations['postal_code] == postal_code]   
+                     st.dataframe(data = df_stations[df_stations['postal_code] == postal_code]  ) 
 
         # LEFT SIDE VISUALIZATION
         with left_column:
