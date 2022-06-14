@@ -213,7 +213,7 @@ if selected == "Prediction of demand":
                      
                      AgGrid(df)
                 elif visualization == "All stations":
-                     df = df_stations[['name', 'address', 'postal_code', 'total_bases']])
+                     df = df_stations[['name', 'address', 'postal_code', 'total_bases']]
                      AgGrid(df)
         # LEFT SIDE VISUALIZATION
         with left_column:
