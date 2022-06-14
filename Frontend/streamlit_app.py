@@ -523,7 +523,7 @@ if selected_switch == "Dashboard demand":
 
             st.write(fig)
 
-    # Container 3 REPRESENTATION OF THE TIME SERIES
+    # Container 3 REPRESENTATION OF THE TIME SERIES OR STATIONS INFORMATION
  
     with st.container():
         if detail_stations == True:
@@ -531,7 +531,7 @@ if selected_switch == "Dashboard demand":
                 column1, column2 = st.columns([2,1])
                         #MIDDLE SIDE VISUALIZATION
                 with column1: 
-                        st.subheader("Stations list")
+                        
                         if visualization == "Demand per zones":
                                 df = df_stations[df_stations['postal_code']==postal_code]
                                 df = df[['id','name', 'address', 'total_bases', 'latitude', 'longitude']]
@@ -557,6 +557,16 @@ if selected_switch == "Dashboard demand":
                                 height=350,
                                 width = '100%',
                                 reload_data=True)
+                
+                with column2:
+
+                #create the folium map with location of interest        
+                        mapa = folium.Map(location = [df.latitude.mean(),df.longitude.mean()], zoom_start=13,control_scale = True)
+                #add markers for stations
+                        for index, location_info in df.iterrows():
+                                folium.Marker([location_info["latitude"], location_info["longitude"]],popup=location_info["name"]).add_to(mapa)
+                        show_map = st_folium(mapa)
+                        
         else:
                 st.subheader('Evolution of demand in the selected year')
                 rides_per_hour['datetime'] = pd.to_datetime(rides_per_hour['datetime'])
