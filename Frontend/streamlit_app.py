@@ -232,7 +232,7 @@ if selected == "Prediction of demand":
                         height=350,
                         width = '100%',
                         reload_data=True)
-                df = grid_response[df]
+                
                 selected = grid_response['selected_rows']
                 new_df = pd.DataFrame(selected)
         # LEFT SIDE VISUALIZATION
