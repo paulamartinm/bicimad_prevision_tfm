@@ -32,17 +32,17 @@ Filters:
 
 * Period: 24 hours / 14 days
 * Type of visualization:
-** All stations: aggregated demand
-** Demand per zones: prediction for each zone for which demand has been modelled.
+    * All stations: aggregated demand
+    * Demand per zones: prediction for each zone for which demand has been modelled.
 
 Depending on the type of visualization there are different filters available:
 
 * Demand per zones:
-** Postal code
-** Comparison of all zones or individual zones
+    * Postal code
+    * Comparison of all zones or individual zones
 
 * All stations:
-** Model: different machine learning models or comparison between them
+    * Model: different machine learning models or comparison between them
 
 ![alt text](https://github.com/paulamartinm/bicimad_prevision_tfm/blob/main/Frontend/manual_user/prediction-demand-I.png "prediction-demand-I")
 
@@ -60,4 +60,5 @@ Filters:
 * Type of visualization: all stations or demand per zones
 * Postal code (if demand per zones is selected)
 * Bottom information: evolution of demand (shows the time series evolution of demand) or stations information (information about stations and location)
+
 ![alt text](https://github.com/paulamartinm/bicimad_prevision_tfm/blob/main/Frontend/manual_user/dashboard-demand-I.png "dashboard-demand-I")
