@@ -345,8 +345,8 @@ if selected_switch == "Dashboard demand":
 
     month = st.sidebar.multiselect(
         "Select the month: ",
-        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-        default=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        rides_per_hour[rides_per_hour['year']==year]['month'].unique(),
+        rides_per_hour[rides_per_hour['year']==year]['month'].unique(),
         format_func=lambda x: month_options.get(x))
 
     visualization = st.sidebar.selectbox(
