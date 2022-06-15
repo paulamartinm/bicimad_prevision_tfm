@@ -23,3 +23,11 @@ All the notebooks are available on the folder Notebooks of the repo. They are:
 The frontend of the project has been developed with Streamlit [Click here to access the application](https://share.streamlit.io/paulamartinm/bicimad_prevision_tfm/main/Frontend/streamlit_app.py )
 
 ![alt text](https://github.com/paulamartinm/bicimad_prevision_tfm/blob/main/Frontend/manual_user/menu-frontend.png "menu-frontend")
+
+![alt text](https://github.com/paulamartinm/bicimad_prevision_tfm/blob/main/Frontend/manual_user/prediction-demand-I.png "prediction-demand-I")
+
+![alt text](https://github.com/paulamartinm/bicimad_prevision_tfm/blob/main/Frontend/manual_user/prediction-demand-II.png "prediction-demand-II")
+
+![alt text](https://github.com/paulamartinm/bicimad_prevision_tfm/blob/main/Frontend/manual_user/prediction-demand-III.png "prediction-demand-III")
+
+![alt text](https://github.com/paulamartinm/bicimad_prevision_tfm/blob/main/Frontend/manual_user/dashboard-demand-I.png "dashboard-demand-I")
