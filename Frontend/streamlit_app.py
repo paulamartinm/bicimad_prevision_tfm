@@ -205,7 +205,8 @@ if selected_switch == "Prediction of demand":
             st.write(fig)
         
         if model == "Compare models":
-                left_column, middle_column,right_column = st.columns([2,2,0])
+                left_column, middle_column = st.columns([2,2])
+                left_column_hidden, right_column = st.columns([2,2])
         else:
                 left_column, middle_column,right_column = st.columns([1,3,2])
         
