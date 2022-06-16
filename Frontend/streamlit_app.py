@@ -277,7 +277,7 @@ if selected_switch == "Prediction of demand":
                 gridOptions = gb.build()
                 
                 grid_response = AgGrid(
-                        df,
+                        metrics,
                         gridOptions=gridOptions,
                         data_return_mode = 'AS_INPUT',
                         update_mode = 'MODEL_CHANGED',
