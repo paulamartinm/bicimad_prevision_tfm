@@ -205,7 +205,7 @@ if selected_switch == "Prediction of demand":
             st.write(fig)
         
         if model == "Compare models":
-                left_column, middle_column,right_column = st.columns([2,2,1])
+                left_column, middle_column,right_column = st.columns([2,2,0])
         else:
                 left_column, middle_column,right_column = st.columns([1,3,2])
         
@@ -270,8 +270,23 @@ if selected_switch == "Prediction of demand":
             if model == "Compare models" and visualization == "All stations":
 
                 metrics = evaluation_models[['model', 'MSE', 'MAE', 'RMSE', 'R2']]
-                AgGrid(metrics)
-
+                gb = GridOptionsBuilder.from_dataframe(metrics)
+                gb.configure_side_bar()
+                
+                gridOptions = gb.build()
+                
+                grid_response = AgGrid(
+                        df,
+                        gridOptions=gridOptions,
+                        data_return_mode = 'AS_INPUT',
+                        update_mode = 'MODEL_CHANGED',
+                        fit_columns_on_grid_load=False,
+                        theme = 'blue',
+                        enable_enterprise_modules = True,
+                        height=350,
+                        width = '100%',
+                        reload_data=True)
+                
             if model != "Compare models":
 
                 st.metric(label="Maximum demand", value=int(max_demand))
