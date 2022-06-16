@@ -203,26 +203,29 @@ if selected_switch == "Prediction of demand":
                                     dict(step="all")])))
 
             st.write(fig)
-
-        left_column, middle_column,right_column = st.columns([1,3,2])
+        
+        if model == "Compare models":
+                left_column, middle_column,right_column = st.columns([2,2,1])
+        else:
+                left_column, middle_column,right_column = st.columns([1,3,2])
         
         #MIDDLE SIDE VISUALIZATION
         with middle_column:
                 st.subheader("Stations list")
                 if visualization == "Demand per zones":
                      df = df_stations[df_stations['postal_code']==postal_code]
-                     df = df[['id','name', 'address', 'total_bases', 'latitude', 'longitude']]
+                     df = df[['name', 'address', 'total_bases', 'latitude', 'longitude']]
                      
                     
                 elif visualization == "All stations":
-                     df = df_stations[['id','name', 'address', 'postal_code', 'total_bases', 'latitude', 'longitude']]
+                     df = df_stations[['name', 'address', 'postal_code', 'total_bases', 'latitude', 'longitude']]
                 
                 #AgGrid(df)
                 gb = GridOptionsBuilder.from_dataframe(df)
                 gb.configure_side_bar()
                 
                 gridOptions = gb.build()
-                selected = df
+                
                 grid_response = AgGrid(
                         df,
                         gridOptions=gridOptions,
@@ -266,8 +269,8 @@ if selected_switch == "Prediction of demand":
 
             if model == "Compare models" and visualization == "All stations":
 
-                st.dataframe(
-                    evaluation_models[['model', 'MSE', 'MAE', 'RMSE', 'R2']])
+                metrics = evaluation_models[['model', 'MSE', 'MAE', 'RMSE', 'R2']]
+                AgGrid(metrics)
 
             if model != "Compare models":
 
