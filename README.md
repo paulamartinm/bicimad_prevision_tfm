@@ -14,7 +14,7 @@ One of them is a zip file, containing one file per month, the file must be unzip
 All the notebooks are available on the folder Notebooks of the repo. They are:
 
  1. Exploring and preparing the data -> preparing and converting the raw data into datasets for the models
- 2. Exploratory Data Analysis -> analyzing the data created on the first notebook
+ 2. Exploratory Data Analysis -> analyzing the data created on the first notebook (patterns in demand and demand per stations)
  3. Models for global demand -> machine learning models to analyze the aggregated demand of the service
  4. Models demand per zones -> machine learning models to analyze the demand per zone of Madrid
 
