@@ -26,12 +26,13 @@ predictions_total = pd.read_csv("Frontend/predictions_all_stations.csv")
 predictions_per_zone = pd.read_csv("Frontend/predictions_per_zone.csv")
 rides_per_hour = pd.read_csv("Frontend/movements_grouped.csv")
 #Preparing the dataset rides_per_station_year
-if year == 2021:
-        rides_per_station_year = pd.read_csv("Frontend/rides_per_station_2021.zip")
-elif year == 2020:
-        rides_per_station_year = pd.read_csv("Frontend/rides_per_station_2020.zip")
-else:
-        rides_per_station_year = pd.read_csv("Frontend/rides_per_station_2019.zip")
+if visualization == "Dashboard demand":
+        if year == 2021:
+                rides_per_station_year = pd.read_csv("Frontend/rides_per_station_2021.zip")
+        elif year == 2020:
+                rides_per_station_year = pd.read_csv("Frontend/rides_per_station_2020.zip")
+        else:
+                rides_per_station_year = pd.read_csv("Frontend/rides_per_station_2019.zip")
 
 rides_per_station_year = rides_per_station_year.merge(df_stations, how='inner', left_on = 'id', right_on = 'id')
 rides_per_station_year['postal_code'] = rides_per_station_year['postal_code_y']
