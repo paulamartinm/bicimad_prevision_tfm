@@ -106,7 +106,7 @@ if selected_switch == "Prediction of demand":
 
                 fig.update_layout(
                     showlegend=True,
-                    width=800,
+                    width=1000,
                     height=400,
                     margin=dict(l=1, r=1, b=1, t=1),
                     font=dict(color="#383635", size=15)
@@ -183,7 +183,7 @@ if selected_switch == "Prediction of demand":
 
             fig.update_layout(
                         showlegend=True,
-                        width=1400,
+                        width=1200,
                         height=400,
                         margin=dict(l=1, r=1, b=1, t=1),
                         font=dict(color="#383635", size=15)
@@ -325,8 +325,8 @@ if selected_switch == "Prediction of demand":
                 fig = px.pie(pie_chart, values = 'postal_code', names = 'model', hover_name='model')
                 fig.update_layout(
                         showlegend=True,
-                        width=600,
-                        height=400,
+                        width=300,
+                        height=300,
                         margin=dict(l=1, r=1, b=1, t=1),
                         font=dict(color="#383635", size=15)
                         )
@@ -339,7 +339,7 @@ if selected_switch == "Prediction of demand":
 ###########################
 
 if selected_switch == "Dashboard demand":
-
+    st.sidebar.subheader("Filters")
     month_options = {
         1: "January",
         2: "February",
