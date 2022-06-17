@@ -57,7 +57,8 @@ rides_per_hour['day_week'] = rides_per_hour['is_weekend'].map(is_weekend)
 #######################################
 
 if selected_switch == "Prediction of demand":
-
+        
+    st.sidebar.subheader("Filters")
     scope = st.sidebar.radio('Period: ', ['next 24 hours', 'next 14 days'])
 
     visualization = st.sidebar.selectbox(
