@@ -56,7 +56,7 @@ rides_per_station_year['day_week'] = rides_per_station_year['weekday'].map(is_we
 # PREDICTIONS OF DEMAND VISUALIZATION #
 #######################################
 
-
+if selected_switch = "Prediction of demand":
 
     scope = st.sidebar.radio('Period: ', ['next 24 hours', 'next 14 days'])
 
