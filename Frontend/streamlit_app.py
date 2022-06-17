@@ -34,10 +34,10 @@ if selected_switch == "Dashboard demand":
         else:
                 rides_per_station_year = pd.read_csv("Frontend/rides_per_station_2019.zip")
 
-rides_per_station_year = rides_per_station_year.merge(df_stations, how='inner', left_on = 'id', right_on = 'id')
-rides_per_station_year['postal_code'] = rides_per_station_year['postal_code_y']
-rides_per_station_year = rides_per_station_year[['postal_code', 'rides', 'weekday', 'month', 'year', 'day', 'hour','time', 'datetime']]
-rides_per_station_year = rides_per_station_year.groupby(['postal_code', 'weekday','month', 'year', 'day','hour', 'datetime', 'time'])['rides'].sum().reset_index()
+        rides_per_station_year = rides_per_station_year.merge(df_stations, how='inner', left_on = 'id', right_on = 'id')
+        rides_per_station_year['postal_code'] = rides_per_station_year['postal_code_y']
+        rides_per_station_year = rides_per_station_year[['postal_code', 'rides', 'weekday', 'month', 'year', 'day', 'hour','time', 'datetime']]
+        rides_per_station_year = rides_per_station_year.groupby(['postal_code', 'weekday','month', 'year', 'day','hour', 'datetime', 'time'])['rides'].sum().reset_index()
 #Preparing the dataset with models used
 evaluation_models = pd.read_csv("Frontend/evaluation_models_global_demand.csv")
 models_used = predictions_per_zone.groupby('postal_code').max().reset_index()
