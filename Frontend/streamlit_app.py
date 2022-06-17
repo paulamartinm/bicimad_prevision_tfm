@@ -270,7 +270,7 @@ if selected_switch == "Prediction of demand":
 
             if model == "Compare models" and visualization == "All stations":
 
-                metrics = evaluation_models[['model', 'MSE', 'MAE', 'RMSE', 'R2']]
+                metrics = evaluation_models[['model', 'MSE', 'MAE', 'RMSE']]
                 gb = GridOptionsBuilder.from_dataframe(metrics)
                 gb.configure_side_bar()
                 
