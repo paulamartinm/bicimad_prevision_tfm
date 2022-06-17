@@ -50,7 +50,7 @@ is_weekend_2 = {
         "Saturday": "Weekend",
         "Sunday": "Weekend"}
 rides_per_hour['day_week'] = rides_per_hour['is_weekend'].map(is_weekend)
-rides_per_station_year['day_week'] = rides_per_station_year['weekday'].map(is_weekend_2)
+
 
 #######################################
 # PREDICTIONS OF DEMAND VISUALIZATION #
@@ -367,6 +367,7 @@ if selected_switch == "Dashboard demand":
     rides_per_station_year['postal_code'] = rides_per_station_year['postal_code_y']
     rides_per_station_year = rides_per_station_year[['postal_code', 'rides', 'weekday', 'month', 'year', 'day', 'hour','time', 'datetime']]
     rides_per_station_year = rides_per_station_year.groupby(['postal_code', 'weekday','month', 'year', 'day','hour', 'datetime', 'time'])['rides'].sum().reset_index()
+    rides_per_station_year['day_week'] = rides_per_station_year['weekday'].map(is_weekend_2)
     month = st.sidebar.multiselect(
         "Select the month: ",
         rides_per_hour[rides_per_hour['year']==year]['month'].unique(),
