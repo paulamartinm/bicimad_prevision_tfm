@@ -10,6 +10,7 @@ The main objective of this project is to analyze and predict the hourly demand f
 First you need to download all the datasets available in the folder of **Data**  and save them in the same folder as the jupyter notebooks.
 Some datasets are downloaded via a google drive link, due to the size of these files. 
 One of them is a zip file, containing one file per month, the file must be unzipped in the same folder as the notebooks and the other files.
+All the libraries needed to execute the notebooks are in the file requirements.txt
 
 All the notebooks are available on the folder Notebooks of the repo. They are:
 
