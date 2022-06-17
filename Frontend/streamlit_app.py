@@ -25,12 +25,18 @@ df_stations = pd.read_csv("Frontend/stations_postal_code.csv")
 predictions_total = pd.read_csv("Frontend/predictions_all_stations.csv")
 predictions_per_zone = pd.read_csv("Frontend/predictions_per_zone.csv")
 rides_per_hour = pd.read_csv("Frontend/movements_grouped.csv")
-#Preparing the dataset rides_per_station_2021
-rides_per_station_2021 = pd.read_csv("Frontend/rides_per_station_2021.zip")
-rides_per_station_2021 = rides_per_station_2021.merge(df_stations, how='inner', left_on = 'id', right_on = 'id')
-rides_per_station_2021['postal_code'] = rides_per_station_2021['postal_code_y']
-rides_per_station_2021 = rides_per_station_2021[['postal_code', 'rides', 'weekday', 'month', 'year', 'day', 'hour','time', 'datetime']]
-rides_per_station_2021 = rides_per_station_2021.groupby(['postal_code', 'weekday','month', 'year', 'day','hour', 'datetime', 'time'])['rides'].sum().reset_index()
+#Preparing the dataset rides_per_station_year
+if year == 2021:
+        rides_per_station_year = pd.read_csv("Frontend/rides_per_station_2021.zip")
+elif year == 2020:
+        rides_per_station_year = pd.read_csv("Frontend/rides_per_station_2020.zip")
+else:
+        rides_per_station_year = pd.read_csv("Frontend/rides_per_station_2019.zip")
+
+rides_per_station_year = rides_per_station_year.merge(df_stations, how='inner', left_on = 'id', right_on = 'id')
+rides_per_station_year['postal_code'] = rides_per_station_year['postal_code_y']
+rides_per_station_year = rides_per_station_year[['postal_code', 'rides', 'weekday', 'month', 'year', 'day', 'hour','time', 'datetime']]
+rides_per_station_year = rides_per_station_year.groupby(['postal_code', 'weekday','month', 'year', 'day','hour', 'datetime', 'time'])['rides'].sum().reset_index()
 #Preparing the dataset with models used
 evaluation_models = pd.read_csv("Frontend/evaluation_models_global_demand.csv")
 models_used = predictions_per_zone.groupby('postal_code').max().reset_index()
@@ -55,7 +61,7 @@ is_weekend_2 = {
         "Saturday": "Weekend",
         "Sunday": "Weekend"}
 rides_per_hour['day_week'] = rides_per_hour['is_weekend'].map(is_weekend)
-rides_per_station_2021['day_week'] = rides_per_station_2021['weekday'].map(is_weekend_2)
+rides_per_station_year['day_week'] = rides_per_station_year['weekday'].map(is_weekend_2)
 
 #######################################
 # PREDICTIONS OF DEMAND VISUALIZATION #
