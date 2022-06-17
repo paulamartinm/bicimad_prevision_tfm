@@ -415,7 +415,7 @@ if selected_switch == "Dashboard demand":
         available_docks = df_stations['total_bases'].sum()
       
     if visualization == "Demand per zones":
-         rides_per_hour_station = rides_per_station_2021[rides_per_station_2021['postal_code'] == postal_code]
+         rides_per_hour_station = rides_per_station_year[rides_per_station_year['postal_code'] == postal_code]
          average_demand_month = rides_per_hour_station[
                 rides_per_hour_station['month'].isin(month)].groupby(['year']).mean().reset_index()
 
@@ -461,7 +461,7 @@ if selected_switch == "Dashboard demand":
                 rides_per_hour_months = rides_per_hour[rides_per_hour['month'].isin(
                         month)]
         elif visualization == 'Demand per zones':
-                rides_per_hour_months = rides_per_station_2021[rides_per_station_2021['postal_code'] == postal_code]
+                rides_per_hour_months = rides_per_station_year[rides_per_station_year['postal_code'] == postal_code]
                 rides_per_hour_months = rides_per_hour_months[rides_per_hour_months['month'].isin(month)]
         st.subheader('Distribution of demand ')
 
