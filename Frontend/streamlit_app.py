@@ -106,7 +106,7 @@ if selected_switch == "Prediction of demand":
 
                 fig.update_layout(
                     showlegend=True,
-                    width=950,
+                    width=1000,
                     height=400,
                     margin=dict(l=1, r=1, b=1, t=1),
                     font=dict(color="#383635", size=15)
@@ -138,7 +138,7 @@ if selected_switch == "Prediction of demand":
 
                 fig.update_layout(
                     showlegend=False,
-                    width=950,
+                    width=1000,
                     height=400,
                     margin=dict(l=1, r=1, b=1, t=1),
                     font=dict(color="#383635", size=15))
@@ -183,7 +183,7 @@ if selected_switch == "Prediction of demand":
 
             fig.update_layout(
                         showlegend=True,
-                        width=950,
+                        width=1000,
                         height=400,
                         margin=dict(l=1, r=1, b=1, t=1),
                         font=dict(color="#383635", size=15)
@@ -504,7 +504,7 @@ if selected_switch == "Dashboard demand":
 
             fig.update_layout(
                     showlegend=True,
-                    width=1400,
+                    width=950,
                     height=400,
                     margin=dict(l=1, r=1, b=1, t=1),
                     font=dict(color="#383635", size=15))
@@ -542,7 +542,7 @@ if selected_switch == "Dashboard demand":
 
                 fig.update_layout(
                     showlegend=True,
-                    width=1400,
+                    width=950,
                     height=400,
                     margin=dict(l=1, r=1, b=1, t=1),
                     font=dict(color="#383635", size=15))
@@ -608,7 +608,7 @@ if selected_switch == "Dashboard demand":
 
                 fig.update_layout(
                         showlegend=True,
-                        width=1400,
+                        width=950,
                         height=400,
                         margin=dict(l=1, r=1, b=1, t=1),
                         font=dict(color="#383635", size=15))
