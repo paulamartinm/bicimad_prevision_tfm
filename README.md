@@ -7,7 +7,7 @@ Final Project  Master in Data Science (KSchool 2021-2022)
 The main objective of this project is to analyze and predict the hourly demand for Bicimad public service, building an interactive platform, to be used as a dashboard for bicimad's strategic and operational decision making, identifying demand patterns and predicting demand 14 days in advance, by area of madrid (divided by postal code) and globally.
 
 ## :memo: Instructions to run the project
-First you need to download all the datasets available in the folder of data and save them in the same folder as the jupyter notebooks.
+First you need to download all the datasets available in the folder of **Data**  and save them in the same folder as the jupyter notebooks.
 Some datasets are downloaded via a google drive link, due to the size of these files. 
 One of them is a zip file, containing one file per month, the file must be unzipped in the same folder as the notebooks and the other files.
 
