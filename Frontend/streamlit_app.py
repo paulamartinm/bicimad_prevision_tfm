@@ -26,7 +26,7 @@ predictions_total = pd.read_csv("Frontend/predictions_all_stations.csv")
 predictions_per_zone = pd.read_csv("Frontend/predictions_per_zone.csv")
 rides_per_hour = pd.read_csv("Frontend/movements_grouped.csv")
 #Preparing the dataset rides_per_station_year
-if visualization == "Dashboard demand":
+if selected_switch == "Dashboard demand":
         if year == 2021:
                 rides_per_station_year = pd.read_csv("Frontend/rides_per_station_2021.zip")
         elif year == 2020:
